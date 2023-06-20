@@ -43,6 +43,6 @@ public class GameStarter {
         do {
             carNum = inputView.getCarNumber();
             tryCount = inputView.getTryCount();
-        } while (!filter.CheckInputValidate(carNum) || !filter.CheckInputValidate(tryCount));
+        } while (!filter.CheckCarNumberAndTryNumberValidate(carNum) || !filter.CheckCarNumberAndTryNumberValidate(tryCount));
     }
 }
