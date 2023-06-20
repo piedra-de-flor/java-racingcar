@@ -37,13 +37,8 @@ public class GameStarter {
                     .collect(Collectors.toList())
                     .forEach(Car::forward);
 
-            showResult(carList, resultView);
+            resultView.showResult(carList);
         }
-    }
-
-    private void showResult(List<Car> carList, ResultView resultView) {
-        carList.forEach(resultView::showCarLocation);
-        System.out.println();
     }
 
     private void checkInput(InputView inputView, Filter filter) {
