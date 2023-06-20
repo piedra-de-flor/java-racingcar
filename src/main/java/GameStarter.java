@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class GameStarter {
     private final InputView inputView = new InputView();
     private final Filter filter = new Filter();
-    private final CarFactory carFactory = new CarFactory();
+    private final CarObjectMaker carObjectMaker = new CarObjectMaker();
     public static List<Car> carList = new ArrayList<>();
     private int carNum;
     private int tryCount;
@@ -25,13 +25,13 @@ public class GameStarter {
 
     private void initGameProperty() {
         checkInput(inputView, filter);
-        carFactory.makeCar(carNum);
+        carObjectMaker.makeCar(carNum);
     }
 
     private void startGame(int tryCount) {
         ResultView resultView = new ResultView();
         for (int i = 0; i < tryCount; i++) {
-            carList.forEach(car -> car.setRandomNumber(carFactory.insertRandomNumber()));
+            carList.forEach(car -> car.setRandomNumber(carObjectMaker.insertRandomNumber()));
             carList.stream()
                     .filter(car -> filter.CheckRandomNumber(car.getRandomNumber()))
                     .collect(Collectors.toList())

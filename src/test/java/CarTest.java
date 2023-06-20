@@ -9,10 +9,10 @@ public class CarTest {
     @DisplayName("차량 리스트 생성 테스트")
     @Test
     void 차량_리스트_생성_테스트() {
-        CarFactory carFactory = new CarFactory();
+        CarObjectMaker carObjectMaker = new CarObjectMaker();
         Car car = new Car();
 
-        carFactory.makeCar(3);
+        carObjectMaker.makeCar(3);
 
         assertThat(GameStarter.carList.stream()
                 .filter(carInList -> carInList.getClass().equals(car.getClass()))
@@ -23,10 +23,10 @@ public class CarTest {
     @DisplayName("차량 리스트 크기 생성 테스트")
     @Test
     void 차량_리스트_크기_생성_테스트() {
-        CarFactory carFactoryForTest = new CarFactory();
+        CarObjectMaker carObjectMakerForTest = new CarObjectMaker();
 
         GameStarter.carList.clear();
-        carFactoryForTest.makeCar(3);
+        carObjectMakerForTest.makeCar(3);
 
         assertThat(GameStarter.carList.size()).isEqualTo(3);
     }
@@ -42,7 +42,7 @@ public class CarTest {
     @DisplayName("차량 랜덤 변수 삽입 테스트")
     @Test
     void 차량_랜덤_변수_삽입_테스트() {
-        CarFactory factory = new CarFactory();
+        CarObjectMaker factory = new CarObjectMaker();
         GameStarter.carList.forEach(car -> car.setRandomNumber(factory.insertRandomNumber()));
 
         assertThat(GameStarter.carList.stream()
