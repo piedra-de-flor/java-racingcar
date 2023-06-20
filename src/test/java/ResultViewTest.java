@@ -10,7 +10,7 @@ import java.io.PrintStream;
 public class ResultViewTest {
     @DisplayName("자동차 위치 출력 테스트")
     @Test
-    void ViewTest1() {
+    void 자동차_위치_출력_테스트() {
         String expectResult = "----\r\n";
         ResultView resultView = new ResultView();
         Car car = new Car();

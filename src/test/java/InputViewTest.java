@@ -10,7 +10,7 @@ public class InputViewTest {
 
     @DisplayName("자동차 대수 입력 테스트")
     @Test
-    void ViewTest1() {
+    void 자동차_대수_입력_테스트() {
         InputView inputView = new InputView();
         String input = "5";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -22,7 +22,7 @@ public class InputViewTest {
 
     @DisplayName("전진 시도 횟수 입력 테스트")
     @Test
-    void ViewTest2() {
+    void 전진_시도_횟수_입력_테스트() {
         InputView inputView = new InputView();
         String input = "5";
         InputStream in = new ByteArrayInputStream(input.getBytes());
