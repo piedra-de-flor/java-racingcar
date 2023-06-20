@@ -4,7 +4,6 @@ import java.util.stream.Collectors;
 
 //어플리케이션을 시작 및 제어하는 main 클래스
 public class GameStarter {
-    private final InputView inputView = new InputView();
     private final Filter filter = new Filter();
     private final CarObjectMaker carObjectMaker = new CarObjectMaker();
     public static List<Car> carList = new ArrayList<>();
@@ -24,12 +23,11 @@ public class GameStarter {
     }
 
     private void initGameProperty() {
-        checkInput(inputView, filter);
+        checkInput(InputView.getInstance(), filter);
         carObjectMaker.makeCar(carNum);
     }
 
     private void startGame(int tryCount) {
-        ResultView resultView = new ResultView();
         for (int i = 0; i < tryCount; i++) {
             carList.forEach(car -> car.setRandomNumber(carObjectMaker.insertRandomNumber()));
             carList.stream()
@@ -37,7 +35,7 @@ public class GameStarter {
                     .collect(Collectors.toList())
                     .forEach(Car::forward);
 
-            resultView.showResult(carList);
+            ResultView.getInstance().showResult(carList);
         }
     }
 

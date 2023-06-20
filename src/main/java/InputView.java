@@ -2,7 +2,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputView {
-    static Scanner scanner = new Scanner(System.in);
+    private static final InputView inputView = new InputView();
+    Scanner scanner = new Scanner(System.in);
+    private InputView() {
+    }
+    public static InputView getInstance() {
+        return inputView;
+    }
     public int getCarNumber() {
         System.out.println("자동차 대수는 몇 대인가요?");
         try {

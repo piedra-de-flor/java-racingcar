@@ -12,7 +12,6 @@ public class ResultViewTest {
     @Test
     void 자동차_위치_출력_테스트() {
         String expectResult = "----\r\n";
-        ResultView resultView = new ResultView();
         Car car = new Car();
 
         for (int i = 0; i < 3; i++) {
@@ -21,7 +20,7 @@ public class ResultViewTest {
 
         OutputStream realResult = new ByteArrayOutputStream();
         System.setOut(new PrintStream(realResult));
-        resultView.showCarLocation(car);
+        ResultView.getInstance().showCarLocation(car);
 
         assertThat(expectResult).isEqualTo(realResult.toString());
     }

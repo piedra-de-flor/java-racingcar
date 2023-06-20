@@ -1,8 +1,12 @@
 import java.util.List;
 
 public class ResultView {
-    public ResultView() {
+    private static final ResultView resultView = new ResultView();
+    private ResultView() {
+    }
+    public static ResultView getInstance() {
         System.out.println("실행 결과");
+        return resultView;
     }
 
     public void showCarLocation(Car car) {
