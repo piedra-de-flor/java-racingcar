@@ -31,13 +31,4 @@ public class InputViewTest {
         InputView.scanner = new Scanner(System.in);
         assertThat(Integer.parseInt(input)).isEqualTo(inputView.getTryCount());
     }
-    //int값을 byte배열로 바꿔주는 메서드
-    public  byte[] intToByteArray(int value) {
-        byte[] byteArray = new byte[4];
-        byteArray[0] = (byte)(value >> 24);
-        byteArray[1] = (byte)(value >> 16);
-        byteArray[2] = (byte)(value >> 8);
-        byteArray[3] = (byte)(value);
-        return byteArray;
-    }
 }
