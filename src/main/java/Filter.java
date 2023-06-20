@@ -1,9 +1,11 @@
 public class Filter {
+    private final int CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE = 0;
+    private final int CAR_FORWARD_CONDITION_MINIMUM_VALUE = 4;
     public boolean CheckInputValidate(int number) {
-        return number > 0;
+        return number > CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE;
     }
 
     public boolean CheckRandomNumber(double randomNumber) {
-        return randomNumber >= 4;
+        return randomNumber >= CAR_FORWARD_CONDITION_MINIMUM_VALUE;
     }
 }

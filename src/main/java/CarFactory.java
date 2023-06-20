@@ -1,7 +1,7 @@
 public class CarFactory {
     private final RandomNumberFactory factory = new RandomNumberFactory();
     public void makeCar(int carNumber) {
-        for (int i = 0; i < carNumber; i++) {
+        for (int aCar = 0; aCar < carNumber; aCar++) {
             Car car = new Car();
             GameStarter.carList.add(car);
         }

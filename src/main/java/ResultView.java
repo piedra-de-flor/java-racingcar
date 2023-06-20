@@ -4,7 +4,7 @@ public class ResultView {
     }
 
     public void showCarLocation(Car car) {
-        for (int i = 0; i < car.getLocation(); i++) {
+        for (int aCar = 0; aCar < car.getLocation(); aCar++) {
             System.out.print("-");
         }
         System.out.println();

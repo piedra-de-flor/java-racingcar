@@ -1,5 +1,5 @@
 public class Car {
-    private static final double INITIAL_RANDOM_NUMBER = -1;
+    private static final double INITIAL_RANDOM_NUMBER = 0;
     private static final int INITIAL_LOCATION = 1;
     private int location;
     private double randomNumber;
