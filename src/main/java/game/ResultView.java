@@ -1,11 +1,15 @@
+package game;
+
+import cars.Car;
+
 import java.util.List;
 
 public class ResultView {
     private static final ResultView resultView = new ResultView();
     private ResultView() {
+        System.out.println("실행 결과");
     }
     public static ResultView getInstance() {
-        System.out.println("실행 결과");
         return resultView;
     }
 

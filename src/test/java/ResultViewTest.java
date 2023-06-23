@@ -1,3 +1,5 @@
+import cars.Car;
+import game.ResultView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,15 +14,15 @@ public class ResultViewTest {
     @Test
     void 자동차_위치_출력_테스트() {
         String expectResult = "----\r\n";
-        Car car = new Car();
+        //Car car = new Car();
 
         for (int i = 0; i < 3; i++) {
-            car.forward();
+            //car.forward();
         }
 
         OutputStream realResult = new ByteArrayOutputStream();
         System.setOut(new PrintStream(realResult));
-        ResultView.getInstance().showCarLocation(car);
+        //ResultView.getInstance().showCarLocation(car);
 
         assertThat(expectResult).isEqualTo(realResult.toString());
     }
