@@ -17,7 +17,7 @@ public class InputViewTest {
         System.setIn(in);
 
         InputView.getInstance().scanner = new Scanner(System.in);
-        assertThat(Integer.parseInt(input)).isEqualTo(InputView.getInstance().getCarNumber());
+        assertThat(Integer.parseInt(input)).isEqualTo(InputView.getInstance().inputCarNumber());
     }
 
     @DisplayName("전진 시도 횟수 입력 테스트")
@@ -28,6 +28,6 @@ public class InputViewTest {
         System.setIn(in);
 
         InputView.getInstance().scanner = new Scanner(System.in);
-        assertThat(Integer.parseInt(input)).isEqualTo(InputView.getInstance().getTryCount());
+        assertThat(Integer.parseInt(input)).isEqualTo(InputView.getInstance().inputTryCount());
     }
 }

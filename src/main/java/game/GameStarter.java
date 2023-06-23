@@ -7,8 +7,7 @@ import cars.CarMoveByRandomNumberManager;
 public class GameStarter {
     private final Filter filter = new Filter();
     private CarManager manager;
-    private int carNum;
-    private int tryCount;
+
     //어플리케이션 시작
     public static void main(String[] args) {
         GameStarter gameStarter = new GameStarter();
@@ -18,25 +17,18 @@ public class GameStarter {
     //어플리케이션 흐름 제어
     private void run() {
         initGameProperty();
-        startGame(tryCount);
+        startGame();
     }
 
     private void initGameProperty() {
-        checkInput(InputView.getInstance(), filter);
-        manager = new CarMoveByRandomNumberManager(carNum);
+        InputView.getInstance().checkInput(filter);
+        manager = new CarMoveByRandomNumberManager(InputView.getInstance().getCarNumber());
     }
 
-    private void startGame(int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
+    private void startGame() {
+        for (int i = 0; i < InputView.getInstance().getTryCount(); i++) {
             manager.forwardCar();
             ResultView.getInstance().showResult(manager.getCarList());
         }
-    }
-
-    private void checkInput(InputView inputView, Filter filter) {
-        do {
-            carNum = inputView.getCarNumber();
-            tryCount = inputView.getTryCount();
-        } while (!filter.CheckCarNumberAndTryNumberValidate(carNum) || !filter.CheckCarNumberAndTryNumberValidate(tryCount));
     }
 }
