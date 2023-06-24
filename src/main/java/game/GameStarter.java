@@ -7,6 +7,7 @@ import cars.CarMoveByRandomNumberManager;
 public class GameStarter {
     private final Filter filter = new Filter();
     private CarManager manager;
+    InputView inputView = InputView.getInstance();
 
     //어플리케이션 시작
     public static void main(String[] args) {
@@ -21,12 +22,12 @@ public class GameStarter {
     }
 
     private void initGameProperty() {
-        InputView.getInstance().checkInput(filter);
-        manager = new CarMoveByRandomNumberManager(InputView.getInstance().getCarNumber());
+        inputView.validateInput(filter);
+        manager = new CarMoveByRandomNumberManager(inputView.getCarNumber());
     }
 
     private void startGame() {
-        for (int i = 0; i < InputView.getInstance().getTryCount(); i++) {
+        for (int tryCount = 0; tryCount < inputView.getTryCount(); tryCount++) {
             manager.forwardCar();
             ResultView.getInstance().showResult(manager.getCarList());
         }

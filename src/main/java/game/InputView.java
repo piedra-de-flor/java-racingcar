@@ -16,7 +16,7 @@ public class InputView {
         return inputView;
     }
 
-    private int inputCarNumber() {
+    public int inputCarNumber() {
         System.out.println("자동차 대수는 몇 대인가요?");
         try {
             carNumber = scanner.nextInt();
@@ -26,7 +26,7 @@ public class InputView {
         }
     }
 
-    private int inputTryCount() {
+    public int inputTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
         try {
             tryCount = scanner.nextInt();
@@ -42,10 +42,11 @@ public class InputView {
     public int getTryCount() {
         return tryCount;
     }
-    void checkInput(Filter filter) {
+
+    void validateInput(Filter filter) {
         do {
             carNumber = inputCarNumber();
             tryCount = inputTryCount();
-        } while (!filter.CheckCarNumberAndTryNumberValidate(carNumber) || !filter.CheckCarNumberAndTryNumberValidate(tryCount));
+        } while (!filter.CheckCarNumberAndTryNumberValidate(carNumber, tryCount));
     }
 }
