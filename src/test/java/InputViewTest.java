@@ -30,4 +30,19 @@ public class InputViewTest {
         InputView.getInstance().scanner = new Scanner(System.in);
         assertThat(Integer.parseInt(input)).isEqualTo(InputView.getInstance().inputTryCount());
     }
+
+    @DisplayName("입력값 필터링 테스트 실패 케이스")
+    @Test
+    void 입력값_필터링_테스트_실패_케이스() {
+
+        assertThat(false).isEqualTo(InputView.getInstance().validateInput(-1, -1));
+        assertThat(false).isEqualTo(InputView.getInstance().validateInput(1, -1));
+        assertThat(false).isEqualTo(InputView.getInstance().validateInput(-1, 1));
+    }
+
+    @DisplayName("입력값 필터링 테스트 성공 케이스")
+    @Test
+    void 입력값_필터링_테스트_성공_케이스() {
+        assertThat(true).isEqualTo(InputView.getInstance().validateInput(1, 1));
+    }
 }
