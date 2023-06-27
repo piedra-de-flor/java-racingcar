@@ -4,6 +4,7 @@ import java.util.stream.IntStream;
 
 public class CarMoveByRandomNumberManager extends CarManager {
     private final int MINIMUM_VALUE_FOR_CAR_FORWARD = 4;
+    private final int POSITIVE_INTEGER_START = 0;
     private final RandomNumberFactory factory = new RandomNumberFactory();
 
     public CarMoveByRandomNumberManager(int carNumber) {
@@ -12,7 +13,7 @@ public class CarMoveByRandomNumberManager extends CarManager {
 
     @Override
     public void forwardCar() {
-        IntStream.range(0, getCarList().size())
+        IntStream.range(POSITIVE_INTEGER_START, getCarList().size())
                 .filter(i -> validateForward())
                 .forEach(i -> getCarList().get(i).forward());
     }
