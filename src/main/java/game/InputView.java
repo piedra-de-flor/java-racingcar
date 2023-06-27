@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class InputView {
     private final int CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE = 0;
-    private static final InputView inputView = new InputView();
+    private static final InputView INPUT_VIEW = new InputView();
     public Scanner scanner = new Scanner(System.in);
     private int carNumber;
     private int tryCount;
@@ -14,7 +14,7 @@ public class InputView {
     }
 
     public static InputView getInstance() {
-        return inputView;
+        return INPUT_VIEW;
     }
 
     private int inputCarNumber() {
