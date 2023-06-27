@@ -7,8 +7,8 @@ public class CarMoveByRandomNumberManager extends CarManager {
     private final int POSITIVE_INTEGER_START = 0;
     private final RandomNumberFactory factory = new RandomNumberFactory();
 
-    public CarMoveByRandomNumberManager(int carNumber) {
-        super(carNumber);
+    public CarMoveByRandomNumberManager() {
+        super();
     }
 
     @Override

@@ -22,7 +22,7 @@ public class GameStarter {
 
     private void initGameProperty() {
         inputView.tryInput();
-        manager = new CarMoveByRandomNumberManager(inputView.getCarNumber());
+        manager = new CarMoveByRandomNumberManager();
     }
 
     private void startGame() {
