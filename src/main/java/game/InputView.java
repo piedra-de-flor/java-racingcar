@@ -19,19 +19,19 @@ public class InputView {
 
     private int inputCarNumber() {
         System.out.println("자동차 대수는 몇 대인가요?");
-        try {
-            return scanner.nextInt();
-        } catch (InputMismatchException e) {
-            throw new IllegalArgumentException();
-        }
+        return input();
     }
 
     private int inputTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
+        return input();
+    }
+
+    private int input() {
         try {
             return scanner.nextInt();
         } catch (InputMismatchException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("input error - check your input it must be in Integer");
         }
     }
 
@@ -43,7 +43,7 @@ public class InputView {
         return tryCount;
     }
 
-    public void input() {
+    public void tryInput() {
         do {
             carNumber = inputCarNumber();
             tryCount = inputTryCount();

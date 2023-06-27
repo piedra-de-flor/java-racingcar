@@ -21,7 +21,7 @@ public class GameStarter {
     }
 
     private void initGameProperty() {
-        inputView.input();
+        inputView.tryInput();
         manager = new CarMoveByRandomNumberManager(inputView.getCarNumber());
     }
 
