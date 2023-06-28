@@ -10,11 +10,25 @@ public class InputView {
     private int carNumber;
     private int tryCount;
 
-    private InputView() {
-    }
+    private InputView() {}
 
     public static InputView getInstance() {
         return INPUT_VIEW;
+    }
+
+    public int getCarNumber() {
+        return carNumber;
+    }
+
+    public int getTryCount() {
+        return tryCount;
+    }
+
+    public void tryInput() {
+        do {
+            carNumber = inputCarNumber();
+            tryCount = inputTryCount();
+        } while (!validateInput(carNumber, tryCount));
     }
 
     private int inputCarNumber() {
@@ -33,21 +47,6 @@ public class InputView {
         } catch (InputMismatchException e) {
             throw new IllegalArgumentException("input error - check your input it must be in Integer");
         }
-    }
-
-    public int getCarNumber() {
-        return carNumber;
-    }
-
-    public int getTryCount() {
-        return tryCount;
-    }
-
-    public void tryInput() {
-        do {
-            carNumber = inputCarNumber();
-            tryCount = inputTryCount();
-        } while (!validateInput(carNumber, tryCount));
     }
 
     public boolean validateInput(int carNumber, int tryCount) {

@@ -13,15 +13,15 @@ public class ResultView {
         return RESULT_VIEW;
     }
 
+    public void showResult(List<Car> carList) {
+        carList.forEach(this::showCarLocation);
+        System.out.println();
+    }
+
     public void showCarLocation(Car car) {
         for (int aCar = 0; aCar < car.getLocation(); aCar++) {
             System.out.print("-");
         }
-        System.out.println();
-    }
-
-    public void showResult(List<Car> carList) {
-        carList.forEach(this::showCarLocation);
         System.out.println();
     }
 }
