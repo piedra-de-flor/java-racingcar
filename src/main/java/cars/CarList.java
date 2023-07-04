@@ -9,7 +9,7 @@ public class CarList {
     private final List<Car> carList;
 
     public CarList(List<Car> carList) {
-        makeCars(carList);
+        makeCarList(carList);
         this.carList = carList;
     }
 
@@ -17,10 +17,13 @@ public class CarList {
         return Collections.unmodifiableList(carList);
     }
 
-    public void makeCars(List<Car> carList) {
+    public void makeCarList(List<Car> carList) {
         for (int aCar = 0; aCar < InputView.getInstance().getCarNumber(); aCar++) {
-            Car car = new Car();
-            carList.add(car);
+            carList.add(makeCar());
         }
+    }
+
+    public Car makeCar() {
+        return new Car();
     }
 }

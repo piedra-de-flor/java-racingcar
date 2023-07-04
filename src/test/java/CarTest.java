@@ -1,43 +1,60 @@
-import cars.*;
+import cars.Car;
+import cars.CarManager;
+import game.InputView;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.stream.Collectors;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CarTest {
+public class CarTest extends CarManager {
+    private final int CAR_NUMBER_FOR_TEST = 1;
+    private final int INITIAL_LOCATION = 1;
 
-    final int testSize = 5;
-    CarManager testManager = new CarMoveByRandomNumberManager(testSize) {
-        @Override
-        public boolean validateForward() {
-            return true;
+    @Override
+    public void forwardCar() {
+        getCarList().forEach(Car::forward);
+    }
+
+    private void forwardCar(int tryNumber, CarManager testManager) {
+        for (int i = 0; i < tryNumber; i++) {
+            testManager.forwardCar();
         }
-    };
-
-    @DisplayName("차량 리스트 생성 테스트")
-    @Test
-    void 차량_리스트_생성_테스트() {
-        assertThat(testManager.getCarList().stream()
-                .filter(car -> car.getClass().equals(Car.class))
-                .collect(Collectors.toList()))
-                .isEqualTo(testManager.getCarList());
     }
 
-    @DisplayName("차량 리스트 크기 생성 테스트")
-    @Test
-    void 차량_리스트_크기_생성_테스트() {
-        assertThat(testManager.getCarList().size()).isEqualTo(testSize);
+    @Override
+    public boolean validateForward() {
+        return false;
     }
 
-    @DisplayName("차량 전진 테스트")
-    @Test
-    void 차량_전진_테스트() {
-        testManager.forwardCar();
-        assertThat(testManager.getCarList().stream()
-                .filter(car -> car.getLocation() == 2)
-                .collect(Collectors.toList()))
-                .isEqualTo(testManager.getCarList());
+    private void initPropertyForTest() {
+        InputViewTest.initTestScanner(String.valueOf(CAR_NUMBER_FOR_TEST));
+        InputView.getInstance().inputCarNumber();
+    }
+
+    @DisplayName("차량 전진 성공 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5})
+    void 차량_전진_성공_테스트(int tryNumber) {
+        initPropertyForTest();
+        CarManager testManager = new CarTest();
+
+        forwardCar(tryNumber, testManager);
+
+        assertThat(testManager.getCarList().get(0).getLocation()).isEqualTo(tryNumber + INITIAL_LOCATION);
+    }
+
+    @DisplayName("차량 전진 실패 테스트")
+    @ParameterizedTest
+    @ValueSource(ints = {1, 3, 5})
+    void 차량_전진_실패_테스트(int tryNumber) {
+        initPropertyForTest();
+        CarManager testManager = new CarTest();
+
+        if (validateForward()) {
+            forwardCar(tryNumber, testManager);
+        }
+
+        assertThat(testManager.getCarList().get(0).getLocation()).isEqualTo(INITIAL_LOCATION);
     }
 }

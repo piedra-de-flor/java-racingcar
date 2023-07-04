@@ -24,32 +24,29 @@ public class InputView {
         return tryCount;
     }
 
-    public void tryInput() {
-        do {
-            carNumber = inputCarNumber();
-            tryCount = inputTryCount();
-        } while (!validateInput(carNumber, tryCount));
-    }
-
-    private int inputCarNumber() {
+    public void inputCarNumber() {
         System.out.println("자동차 대수는 몇 대인가요?");
-        return input();
+        do {
+            carNumber = tryInput();
+        } while (!validateInput(carNumber));
     }
 
-    private int inputTryCount() {
+    public void inputTryCount() {
         System.out.println("시도할 횟수는 몇 회인가요?");
-        return input();
+        do {
+            tryCount = tryInput();
+        } while (!validateInput(tryCount));
     }
 
-    private int input() {
+    private int tryInput() {
         try {
             return scanner.nextInt();
         } catch (InputMismatchException e) {
-            throw new IllegalArgumentException("input error - check your input it must be in Integer");
+            throw new IllegalArgumentException("input must be Integer");
         }
     }
 
-    public boolean validateInput(int carNumber, int tryCount) {
-        return (carNumber > CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE && tryCount > CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE);
+    public boolean validateInput(int input) {
+        return (input > CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE);
     }
 }
