@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CarListTest {
+public class CarsMakeFactoryTest {
     @DisplayName("차량 수에 맞는 크기의 리스트 생성 테스트")
     @ParameterizedTest
     @ValueSource(ints = {5, 7, 9})

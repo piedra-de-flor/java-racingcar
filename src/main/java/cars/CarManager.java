@@ -1,18 +1,20 @@
 package cars;
 
+import game.InputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class CarManager {
 
-    private final CarList carList;
+    private final CarsMakeFactory carsMakeFactory;
 
     public CarManager() {
-        this.carList = new CarList(new ArrayList<>());
+        this.carsMakeFactory = new CarsMakeFactory(new ArrayList<>(), InputView.getInstance().getCarNumber());
     }
 
     public List<Car> getCarList() {
-        return carList.getCarList();
+        return carsMakeFactory.getCarList();
     }
 
     public abstract void forwardCar();
