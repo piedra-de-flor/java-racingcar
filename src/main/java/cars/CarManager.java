@@ -7,14 +7,14 @@ import java.util.List;
 
 public abstract class CarManager {
 
-    private final CarsMakeFactory carsMakeFactory;
+    private final CarsContainer carsContainer;
 
     public CarManager() {
-        this.carsMakeFactory = new CarsMakeFactory(new ArrayList<>(), InputView.getInstance().getCarNumber());
+        this.carsContainer = new CarsContainer(new ArrayList<>(), InputView.getInstance().getCarNumber());
     }
 
     public List<Car> getCarList() {
-        return carsMakeFactory.getCarList();
+        return carsContainer.getCarList();
     }
 
     public abstract void forwardCar();
