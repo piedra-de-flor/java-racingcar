@@ -22,11 +22,6 @@ public class CarTest extends CarManager {
         }
     }
 
-    @Override
-    public boolean validateForward() {
-        return false;
-    }
-
     private void initPropertyForTest() {
         InputViewTest.initTestScanner(String.valueOf(CAR_NUMBER_FOR_TEST));
         InputView.getInstance().inputCarNumber();
@@ -51,9 +46,9 @@ public class CarTest extends CarManager {
         initPropertyForTest();
         CarManager testManager = new CarTest();
 
-        if (validateForward()) {
-            forwardCar(tryNumber, testManager);
-        }
+        //if (validateForward()) {
+            //forwardCar(tryNumber, testManager);
+       // }
 
         assertThat(testManager.getCarList().get(0).getLocation()).isEqualTo(INITIAL_LOCATION);
     }

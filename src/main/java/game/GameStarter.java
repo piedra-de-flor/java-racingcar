@@ -1,7 +1,6 @@
 package game;
 
 import cars.CarManager;
-import cars.CarMoveByRandomNumberManager;
 
 //어플리케이션을 시작 및 제어하는 main 클래스
 public class GameStarter {
@@ -23,7 +22,7 @@ public class GameStarter {
     private void initGameProperty() {
         inputView.inputCarNumber();
         inputView.inputTryCount();
-        manager = new CarMoveByRandomNumberManager();
+        manager = new CarManager();
     }
 
     private void startGame() {

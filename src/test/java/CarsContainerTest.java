@@ -1,5 +1,4 @@
 import cars.CarManager;
-import cars.CarMoveByRandomNumberManager;
 import game.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,7 +13,7 @@ public class CarsContainerTest {
     void 차량_리스트_크기_테스트(int input) {
         InputViewTest.initTestScanner(String.valueOf(input));
         InputView.getInstance().inputCarNumber();
-        CarManager testCarManager = new CarMoveByRandomNumberManager();
+        CarManager testCarManager = new CarManager();
 
         assertThat(testCarManager.getCarList().size()).isEqualTo(input);
     }
