@@ -1,8 +1,8 @@
 package testFilters;
 
-import filters.CarFilter;
+import filters.Conditions;
 
-public class TestFilterForSuccess implements CarFilter {
+public class TestConditionForSuccess implements Conditions {
     @Override
     public boolean validateForward() {
         return true;

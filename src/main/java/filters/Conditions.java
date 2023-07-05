@@ -1,5 +1,5 @@
 package filters;
 
-public interface CarFilter {
+public interface Conditions {
     boolean validateForward();
 }

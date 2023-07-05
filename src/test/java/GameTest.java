@@ -1,20 +1,21 @@
 import cars.Game;
-import filters.CarFilter;
-import game.InputView;
+import filters.Conditions;
+import game.Input;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import testFilters.TestFilterForFail;
-import testFilters.TestFilterForSuccess;
+import testFilters.TestConditionForFail;
+import testFilters.TestConditionForSuccess;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class GameTest {
-    CarFilter testFilter;
+    Input testInput = new Input();
+    Conditions testFilter;
     Game testGame;
     private void initPropertyForTest() {
         InputViewTest.initTestScanner(String.valueOf(1));
-        InputView.getInstance().inputCarNumber();
+        testInput.inputCarNumber();
     }
 
     @DisplayName("차량 전진 성공 테스트")
@@ -22,8 +23,8 @@ public class GameTest {
     @ValueSource(ints = {2, 4, 6})
     void 차량_전진_성공_테스트(int tryNumber) {
         initPropertyForTest();
-        testFilter = new TestFilterForSuccess();
-        testGame = new Game(testFilter);
+        testFilter = new TestConditionForSuccess();
+        testGame = new Game(testFilter, testInput);
 
         for (int i = 0; i < tryNumber; i++) {
             testGame.forwardCar();
@@ -37,8 +38,8 @@ public class GameTest {
     @ValueSource(ints = {2, 4, 6})
     void 차량_전진_실패_테스트(int tryNumber) {
         initPropertyForTest();
-        testFilter = new TestFilterForFail();
-        testGame = new Game(testFilter);
+        testFilter = new TestConditionForFail();
+        testGame = new Game(testFilter, testInput);
 
         for (int i = 0; i < tryNumber; i++) {
             testGame.forwardCar();

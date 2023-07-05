@@ -1,8 +1,6 @@
 package filters;
 
-import filters.CarFilter;
-
-public class CarRandomNumberFilter implements CarFilter {
+public class RandomNumberCondition implements Conditions {
     private final int MINIMUM_VALUE_FOR_CAR_FORWARD = 4;
     private final int SCALE_FACTOR_ZERO_TO_TEN = 10;
 
