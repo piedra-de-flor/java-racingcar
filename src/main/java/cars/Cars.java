@@ -3,10 +3,10 @@ package cars;
 import java.util.Collections;
 import java.util.List;
 
-public class CarsContainer {
+public class Cars {
     private final List<Car> carList;
 
-    public CarsContainer(List<Car> carList, int carNumber) {
+    public Cars(List<Car> carList, int carNumber) {
         makeCarList(carList, carNumber);
         this.carList = carList;
     }

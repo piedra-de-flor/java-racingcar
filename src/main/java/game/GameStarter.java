@@ -1,12 +1,12 @@
 package game;
 
-import cars.CarManager;
+import cars.Game;
 import filters.CarFilter;
 import filters.CarRandomNumberFilter;
 
 //어플리케이션을 시작 및 제어하는 main 클래스
 public class GameStarter {
-    private CarManager manager;
+    private Game manager;
     InputView inputView = InputView.getInstance();
     private final CarFilter carFilter = new CarRandomNumberFilter();
 
@@ -25,7 +25,7 @@ public class GameStarter {
     private void initGameProperty() {
         inputView.inputCarNumber();
         inputView.inputTryCount();
-        manager = new CarManager(carFilter);
+        manager = new Game(carFilter);
     }
 
     private void startGame() {

@@ -1,4 +1,4 @@
-import cars.CarManager;
+import cars.Game;
 import filters.CarFilter;
 import game.InputView;
 import org.junit.jupiter.api.DisplayName;
@@ -8,7 +8,7 @@ import testFilters.TestFilterForSuccess;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CarsContainerTest {
+public class CarsTest {
     CarFilter testFilter = new TestFilterForSuccess();
     @DisplayName("차량 수에 맞는 크기의 리스트 생성 테스트")
     @ParameterizedTest
@@ -17,8 +17,8 @@ public class CarsContainerTest {
         InputViewTest.initTestScanner(String.valueOf(input));
         InputView.getInstance().inputCarNumber();
 
-        CarManager testCarManager = new CarManager(testFilter);
+        Game testGame = new Game(testFilter);
 
-        assertThat(testCarManager.getCarList().size()).isEqualTo(input);
+        assertThat(testGame.getCarList().size()).isEqualTo(input);
     }
 }

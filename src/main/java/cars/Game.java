@@ -1,25 +1,24 @@
 package cars;
 
 import filters.CarFilter;
-import filters.CarRandomNumberFilter;
 import game.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class CarManager {
+public class Game {
     private final int POSITIVE_INTEGER_START = 0;
-    private final CarsContainer carsContainer;
+    private final Cars cars;
     private final CarFilter carFilter;
 
-    public CarManager(CarFilter carFilter) {
-        this.carsContainer = new CarsContainer(new ArrayList<>(), InputView.getInstance().getCarNumber());
+    public Game(CarFilter carFilter) {
+        this.cars = new Cars(new ArrayList<>(), InputView.getInstance().getCarNumber());
         this.carFilter = carFilter;
     }
 
     public List<Car> getCarList() {
-        return carsContainer.getCarList();
+        return cars.getCarList();
     }
 
     public void forwardCar() {

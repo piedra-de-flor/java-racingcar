@@ -1,4 +1,4 @@
-import cars.CarManager;
+import cars.Game;
 import filters.CarFilter;
 import game.InputView;
 import org.junit.jupiter.api.DisplayName;
@@ -9,9 +9,9 @@ import testFilters.TestFilterForSuccess;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CarManagerTest {
+public class GameTest {
     CarFilter testFilter;
-    CarManager testManager;
+    Game testGame;
     private void initPropertyForTest() {
         InputViewTest.initTestScanner(String.valueOf(1));
         InputView.getInstance().inputCarNumber();
@@ -23,13 +23,13 @@ public class CarManagerTest {
     void 차량_전진_성공_테스트(int tryNumber) {
         initPropertyForTest();
         testFilter = new TestFilterForSuccess();
-        testManager = new CarManager(testFilter);
+        testGame = new Game(testFilter);
 
         for (int i = 0; i < tryNumber; i++) {
-            testManager.forwardCar();
+            testGame.forwardCar();
         }
 
-        assertThat(testManager.getCarList().get(0).getLocation()).isEqualTo(1 + tryNumber);
+        assertThat(testGame.getCarList().get(0).getLocation()).isEqualTo(1 + tryNumber);
     }
 
     @DisplayName("차량 전진 실패 테스트")
@@ -38,12 +38,12 @@ public class CarManagerTest {
     void 차량_전진_실패_테스트(int tryNumber) {
         initPropertyForTest();
         testFilter = new TestFilterForFail();
-        testManager = new CarManager(testFilter);
+        testGame = new Game(testFilter);
 
         for (int i = 0; i < tryNumber; i++) {
-            testManager.forwardCar();
+            testGame.forwardCar();
         }
 
-        assertThat(testManager.getCarList().get(0).getLocation()).isEqualTo(1);
+        assertThat(testGame.getCarList().get(0).getLocation()).isEqualTo(1);
     }
 }
