@@ -1,55 +1,25 @@
-import cars.Car;
-import cars.CarManager;
+import cars.CarsContainer;
 import game.InputView;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CarTest extends CarManager {
-    private final int CAR_NUMBER_FOR_TEST = 1;
-    private final int INITIAL_LOCATION = 1;
-
-    @Override
-    public void forwardCar() {
-        getCarList().forEach(Car::forward);
-    }
-
-    private void forwardCar(int tryNumber, CarManager testManager) {
-        for (int i = 0; i < tryNumber; i++) {
-            testManager.forwardCar();
-        }
-    }
-
+public class CarTest{
     private void initPropertyForTest() {
-        InputViewTest.initTestScanner(String.valueOf(CAR_NUMBER_FOR_TEST));
+        InputViewTest.initTestScanner(String.valueOf(1));
         InputView.getInstance().inputCarNumber();
     }
 
-    @DisplayName("차량 전진 성공 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 3, 5})
-    void 차량_전진_성공_테스트(int tryNumber) {
+    @DisplayName("차량 전진 테스트")
+    @Test
+    void 차량_전진_테스트() {
         initPropertyForTest();
-        CarManager testManager = new CarTest();
+        CarsContainer testContainer = new CarsContainer(new ArrayList<>(), InputView.getInstance().getCarNumber());
 
-        forwardCar(tryNumber, testManager);
-
-        assertThat(testManager.getCarList().get(0).getLocation()).isEqualTo(tryNumber + INITIAL_LOCATION);
-    }
-
-    @DisplayName("차량 전진 실패 테스트")
-    @ParameterizedTest
-    @ValueSource(ints = {1, 3, 5})
-    void 차량_전진_실패_테스트(int tryNumber) {
-        initPropertyForTest();
-        CarManager testManager = new CarTest();
-
-        //if (validateForward()) {
-            //forwardCar(tryNumber, testManager);
-       // }
-
-        assertThat(testManager.getCarList().get(0).getLocation()).isEqualTo(INITIAL_LOCATION);
+        testContainer.getCarList().get(0).forward();
+        assertThat(testContainer.getCarList().get(0).getLocation()).isEqualTo(2);
     }
 }

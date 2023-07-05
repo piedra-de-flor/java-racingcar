@@ -1,4 +1,4 @@
-package cars;
+package filters;
 
 public interface CarFilter {
     boolean validateForward();
