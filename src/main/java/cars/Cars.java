@@ -11,8 +11,8 @@ public class Cars {
         this.carList = carList;
     }
 
-    public void makeCarList(List<Car> carList, int carNumber) {
-        for (int aCar = 0; aCar < carNumber; aCar++) {
+    private void makeCarList(List<Car> carList, int carNumber) {
+        for (int index = 0; index < carNumber; index++) {
             carList.add(makeCar());
         }
     }

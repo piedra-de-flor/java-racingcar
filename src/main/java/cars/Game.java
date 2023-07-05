@@ -2,7 +2,6 @@ package cars;
 
 import filters.Conditions;
 import game.Input;
-import game.InputView;
 
 import java.util.ArrayList;
 import java.util.List;

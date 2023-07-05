@@ -13,6 +13,6 @@ public class Car {
     }
 
     public void forward() {
-        this.location += 1;
+        this.location++;
     }
 }

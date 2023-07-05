@@ -18,8 +18,8 @@ public class ResultView {
         System.out.println();
     }
 
-    public void showCarLocation(Car car) {
-        for (int aCar = 0; aCar < car.getLocation(); aCar++) {
+    private void showCarLocation(Car car) {
+        for (int index = 0; index < car.getLocation(); index++) {
             System.out.print("-");
         }
         System.out.println();
