@@ -49,6 +49,6 @@ public class GameTest {
     }
 
     private int getFirstCarLocation() {
-        return testGame.getCarList().get(0).getLocation();
+        return testGame.getCars().get(0).getLocation();
     }
 }

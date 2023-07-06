@@ -4,16 +4,27 @@ import java.util.Collections;
 import java.util.List;
 
 public class Cars {
-    private final List<Car> carList;
+    private final List<Car> cars;
 
-    public Cars(List<Car> carList, int carNumber) {
-        makeCarList(carList, carNumber);
-        this.carList = carList;
+    public Cars(List<Car> cars, int carNumber) {
+        makeCarList(cars, carNumber);
+        this.cars = cars;
     }
 
-    private void makeCarList(List<Car> carList, int carNumber) {
+    public Cars(List<Car> cars, String[] carNames) {
+        makeCarListWithNames(cars, carNames);
+        this.cars = cars;
+    }
+
+    private void makeCarList(List<Car> cars, int carNumber) {
         for (int index = 0; index < carNumber; index++) {
-            carList.add(makeCar());
+            cars.add(makeCar());
+        }
+    }
+
+    private void makeCarListWithNames(List<Car> cars, String[] carNames) {
+        for (String carName : carNames) {
+            cars.add(makeCar(carName));
         }
     }
 
@@ -21,7 +32,11 @@ public class Cars {
         return new Car();
     }
 
-    public List<Car> getCarList() {
-        return Collections.unmodifiableList(carList);
+    private Car makeCar(String name) {
+        return new Car(name);
+    }
+
+    public List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }

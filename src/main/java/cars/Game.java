@@ -13,17 +13,22 @@ public class Game {
     private final Conditions conditions;
 
     public Game(Conditions conditions, Input input) {
-        this.cars = new Cars(new ArrayList<>(), input.getCarNumber());
+        this.cars = new Cars(new ArrayList<>(), input.getCarNames());
         this.conditions = conditions;
     }
 
-    public List<Car> getCarList() {
-        return cars.getCarList();
+    public List<Car> getCars() {
+        return cars.getCars();
     }
 
     public void forwardCar() {
-        IntStream.range(POSITIVE_INTEGER_START, getCarList().size())
+        IntStream.range(POSITIVE_INTEGER_START, getCars().size())
                 .filter(i -> conditions.validateForward())
-                .forEach(i -> getCarList().get(i).forward());
+                .forEach(i -> getCars().get(i).forward());
+    }
+
+    public List<Car> getWinner() {
+        Winners winners = new Winners(getCars());
+        return winners.getWinners();
     }
 }

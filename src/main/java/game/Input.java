@@ -2,6 +2,7 @@ package game;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Input {
@@ -50,17 +51,15 @@ public class Input {
     }
 
     public void inputCarNames() {
-        String inputNames;
         InputView.getInstance().printAskingCarNames();
         do {
-            inputNames = scanner.next();
-            cars = inputNames.split(",");
+            cars = scanner.next().split(",");
         } while (!validateName(cars));
     }
 
     public boolean validateName(String[] cars) {
-        String[] tempList = (String[]) Arrays.stream(cars)
-                .filter(s -> s.length() < 5)
+        Object[] tempList = Arrays.stream(cars)
+                .filter(s -> s.length() <= CAR_NAME_MAXIMUM_LENGTH)
                 .toArray();
 
         return cars.length == tempList.length;

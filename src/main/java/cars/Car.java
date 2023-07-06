@@ -3,10 +3,14 @@ package cars;
 public class Car {
     private final int INITIAL_LOCATION = 1;
     private int location;
-    private final String name;
+    private String name;
 
     Car(String name) {
         this.name = name;
+        this.location = INITIAL_LOCATION;
+    }
+
+    Car() {
         this.location = INITIAL_LOCATION;
     }
 

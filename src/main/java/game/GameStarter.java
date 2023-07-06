@@ -31,7 +31,9 @@ public class GameStarter {
     private void startGame() {
         for (int tryCount = 0; tryCount < input.getTryCount(); tryCount++) {
             manager.forwardCar();
-            ResultView.getInstance().showResult(manager.getCarList());
+            ResultView.getInstance().showResult(manager.getCars());
         }
+
+        ResultView.getInstance().showWinner(manager.getWinner());
     }
 }

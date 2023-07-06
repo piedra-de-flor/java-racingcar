@@ -2,6 +2,7 @@ package game;
 
 import cars.Car;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResultView {
@@ -32,5 +33,17 @@ public class ResultView {
 
     private void showCarName(Car car) {
         System.out.print(car.getName() + " : ");
+    }
+
+    public void showWinner(List<Car> winners) {
+        String winnerNames = String.join(", ", changeCarListToStringList(winners));
+        System.out.println(winnerNames + "가 최종 우승했습니다");
+    }
+
+    private List<String> changeCarListToStringList(List<Car> carList) {
+        List<String> names = new ArrayList<>();
+        carList.forEach(car -> names.add(car.getName()));
+
+        return names;
     }
 }

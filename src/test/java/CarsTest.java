@@ -20,6 +20,6 @@ public class CarsTest {
 
         Game testGame = new Game(testFilter, testInput);
 
-        assertThat(testGame.getCarList().size()).isEqualTo(input);
+        assertThat(testGame.getCars().size()).isEqualTo(input);
     }
 }

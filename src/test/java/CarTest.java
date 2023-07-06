@@ -21,11 +21,11 @@ public class CarTest{
         initPropertyForTest();
         testCars = new Cars(new ArrayList<>(), testInput.getCarNumber());
 
-        testCars.getCarList().get(0).forward();
+        testCars.getCars().get(0).forward();
         assertThat(getFirstCarLocation()).isEqualTo(2);
     }
 
     private int getFirstCarLocation() {
-        return testCars.getCarList().get(0).getLocation();
+        return testCars.getCars().get(0).getLocation();
     }
 }
