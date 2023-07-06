@@ -14,8 +14,13 @@ public class ResultView {
     }
 
     public void showResult(List<Car> carList) {
-        carList.forEach(this::showCarLocation);
+        carList.forEach(this::showCarStatus);
         System.out.println();
+    }
+
+    private void showCarStatus(Car car) {
+        showCarName(car);
+        showCarLocation(car);
     }
 
     private void showCarLocation(Car car) {
@@ -23,5 +28,9 @@ public class ResultView {
             System.out.print("-");
         }
         System.out.println();
+    }
+
+    private void showCarName(Car car) {
+        System.out.print(car.getName() + " : ");
     }
 }
