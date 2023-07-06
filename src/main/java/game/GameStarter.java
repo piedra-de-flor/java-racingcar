@@ -23,7 +23,7 @@ public class GameStarter {
     }
 
     private void initGameProperty() {
-        input.inputCarNumber();
+        input.inputCarNames();
         input.inputTryCount();
         manager = new Game(conditions, input);
     }
