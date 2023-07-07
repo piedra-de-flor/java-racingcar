@@ -20,11 +20,13 @@ public class Winners {
     }
 
     private void compareLocation(Car car) {
+        if (car.getLocation() == maxLocation) {
+            winners.add(car);
+        }
+
         if (car.getLocation() > maxLocation) {
             maxLocation = car.getLocation();
             winners.clear();
-            winners.add(car);
-        } else if (car.getLocation() == maxLocation) {
             winners.add(car);
         }
     }

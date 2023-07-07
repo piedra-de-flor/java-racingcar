@@ -54,10 +54,10 @@ public class Input {
         InputView.getInstance().printAskingCarNames();
         do {
             cars = scanner.next().split(",");
-        } while (!validateName(cars));
+        } while (!validateNames(cars));
     }
 
-    public boolean validateName(String[] cars) {
+    public boolean validateNames(String[] cars) {
         Object[] tempList = Arrays.stream(cars)
                 .filter(s -> s.length() <= CAR_NAME_MAXIMUM_LENGTH)
                 .toArray();

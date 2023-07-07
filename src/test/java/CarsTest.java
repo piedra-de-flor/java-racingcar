@@ -22,4 +22,17 @@ public class CarsTest {
 
         assertThat(testGame.getCars().size()).isEqualTo(input);
     }
+
+    @DisplayName("차량 이름 수에 맞는 크기의 리스트 생성 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = { "test1", "test1,test2", "test1,test2,test3"})
+    void 이름이_있는_차량_리스트_크기_테스트(String input) {
+        InputViewTest.initTestScanner(input);
+        testInput.inputCarNames();
+
+        Game testGame = new Game(testFilter, testInput);
+        String[] testCars = input.split(",");
+
+        assertThat(testGame.getCars().size()).isEqualTo(testCars.length);
+    }
 }

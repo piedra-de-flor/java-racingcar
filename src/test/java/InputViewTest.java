@@ -47,4 +47,16 @@ public class InputViewTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             testInput.inputTryCount();});
     }
+
+    @DisplayName("차량 이름이 5자를 넘어갈 경우 예외 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"over five", "over five,over five1", "over five,over five1,over five2"})
+    void 차량_이름이_5자를_넘을경우_예외_테스트(String input) {
+        initTestScanner(input);
+
+        String[] testCars = input.split(",");
+        boolean real = testInput.validateNames(testCars);
+
+        assertThat(false).isEqualTo(real);
+    }
 }
