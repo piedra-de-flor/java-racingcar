@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Winners {
     private final List<Car> winners;
-    private List<Car> sortedCars;
 
     public Winners(List<Car> cars) {
         this.winners = new ArrayList<>();
@@ -15,7 +14,7 @@ public class Winners {
     }
 
     private void findWinners(List<Car> cars) {
-        sortedCars = new ArrayList<>(cars);
+        List<Car> sortedCars = new ArrayList<>(cars);
         sortedCars.sort(new CarLocationComparator());
 
         makeWinners(sortedCars);

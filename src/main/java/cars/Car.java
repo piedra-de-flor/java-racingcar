@@ -1,7 +1,7 @@
 package cars;
 
 public class Car {
-    private final int INITIAL_LOCATION = 1;
+    private static final int INITIAL_LOCATION = 0;
     private int location;
     private String name;
 
