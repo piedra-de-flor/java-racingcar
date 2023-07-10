@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Winners {
     private final List<Car> winners;
-    List<Car> sortedCars;
+    private List<Car> sortedCars;
 
     public Winners(List<Car> cars) {
         this.winners = new ArrayList<>();

@@ -14,8 +14,8 @@ public class GameTest {
     Conditions testFilter;
     Game testGame;
     private void initPropertyForTest() {
-        InputViewTest.initTestScanner(String.valueOf(1));
-        testInput.inputCarNumber();
+        InputViewTest.initTestScanner("Test");
+        testInput.inputCarNames();
     }
 
     @DisplayName("차량 전진 성공 테스트")

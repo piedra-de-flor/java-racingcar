@@ -28,16 +28,6 @@ public class InputViewTest {
         assertThat(false).isEqualTo(real);
     }
 
-    @DisplayName("차량 수의 입력값들이 문자가 아닐시 예외 테스트")
-    @ParameterizedTest
-    @ValueSource(strings = {"not number", "not number1", "not number2"})
-    void 차량_수_입력이_숫자가_아닐시_예외_테스트(String input) {
-        initTestScanner(input);
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            testInput.inputCarNumber();});
-    }
-
     @DisplayName("전진 시도 횟수의 입력값들이 문자가 아닐시 예외 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"not number", "not number1", "not number2"})

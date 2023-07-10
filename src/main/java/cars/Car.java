@@ -10,10 +10,6 @@ public class Car {
         this.location = INITIAL_LOCATION;
     }
 
-    Car() {
-        this.location = INITIAL_LOCATION;
-    }
-
     public String getName() {
         return this.name;
     }

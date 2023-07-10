@@ -24,13 +24,6 @@ public class Input {
         return cars;
     }
 
-    public void inputCarNumber() {
-        InputView.getInstance().printAskingCarNumber();
-        do {
-            carNumber = tryInput();
-        } while (!validateInput(carNumber));
-    }
-
     public void inputTryCount() {
         InputView.getInstance().printAskingTryCount();
         do {

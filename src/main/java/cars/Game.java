@@ -10,11 +10,11 @@ import java.util.stream.IntStream;
 public class Game {
     private final int POSITIVE_INTEGER_START = 0;
     private final Cars cars;
-    private final Conditions conditions;
+    private final Conditions condition;
 
     public Game(Conditions conditions, Input input) {
         this.cars = new Cars(new ArrayList<>(), input.getCarNames());
-        this.conditions = conditions;
+        this.condition = conditions;
     }
 
     public List<Car> getCars() {
@@ -23,7 +23,7 @@ public class Game {
 
     public void forwardCar() {
         IntStream.range(POSITIVE_INTEGER_START, getCars().size())
-                .filter(i -> conditions.validateForward())
+                .filter(i -> condition.validateForward())
                 .forEach(i -> getCars().get(i).forward());
     }
 
