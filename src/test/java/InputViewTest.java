@@ -45,7 +45,19 @@ public class InputViewTest {
         initTestScanner(input);
 
         String[] testCars = input.split(",");
-        boolean real = testInput.validateNames(testCars);
+        boolean real = testInput.validateNamesLength(testCars);
+
+        assertThat(false).isEqualTo(real);
+    }
+
+    @DisplayName("차량 이름에 공백이 포함 될 경우 예외 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"a,,", "a,b,", ",,,"})
+    void 차량_이름에_공백이_포함_될_경우_예외_테스트(String input) {
+        initTestScanner(input);
+
+        String[] testCars = input.split(",");
+        boolean real = testInput.checkCarsNamesSize(input,testCars);
 
         assertThat(false).isEqualTo(real);
     }

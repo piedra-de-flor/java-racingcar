@@ -14,8 +14,8 @@ public class ResultView {
         return RESULT_VIEW;
     }
 
-    public void showResult(List<Car> carList) {
-        carList.forEach(this::showCarStatus);
+    public void showResult(List<Car> cars) {
+        cars.forEach(this::showCarStatus);
         System.out.println();
     }
 
@@ -40,9 +40,9 @@ public class ResultView {
         System.out.println(winnerNames + "가 최종 우승했습니다");
     }
 
-    private List<String> changeCarListToStringList(List<Car> carList) {
+    private List<String> changeCarListToStringList(List<Car> cars) {
         List<String> names = new ArrayList<>();
-        carList.forEach(car -> names.add(car.getName()));
+        cars.forEach(car -> names.add(car.getName()));
 
         return names;
     }

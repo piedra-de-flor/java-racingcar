@@ -24,4 +24,8 @@ public class Cars {
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
     }
+
+    public int getCarsSize() {
+        return cars.size();
+    }
 }

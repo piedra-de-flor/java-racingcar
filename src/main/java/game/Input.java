@@ -5,8 +5,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
-    private final int CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE = 0;
-    private final int CAR_NAME_MAXIMUM_LENGTH = 5;
+    private static final int CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE = 0;
+    private static final int CAR_NAME_MAXIMUM_LENGTH = 5;
+    private static final int DIFFERENCE_OF_CAR_NUMBER_AND_COMMAS_NUMBER = 1;
     public static Scanner scanner = new Scanner(System.in);
     private String[] cars;
     private int tryCount;
@@ -19,17 +20,17 @@ public class Input {
     }
 
     public void inputTryCount() {
-        InputView.getInstance().printAskingTryCount();
         do {
+            InputView.getInstance().printAskingTryCount();
             tryCount = Integer.parseInt(tryInput());
         } while (!validateInput(tryCount));
     }
 
     private String tryInput() {
         try {
-            return scanner.next();
+            return scanner.nextLine();
         } catch (InputMismatchException e) {
-            throw new IllegalArgumentException(InputView.getInstance().printException());
+            throw new IllegalArgumentException(InputView.getInstance().inputException());
         }
     }
 
@@ -38,22 +39,34 @@ public class Input {
     }
 
     public void inputCarNames() {
-        InputView.getInstance().printAskingCarNames();
+        String carNames;
+
         do {
-            String carNames = removeBlanks(tryInput());
+            InputView.getInstance().printAskingCarNames();
+            carNames = tryInput();
             cars = carNames.split(",");
-        } while (!validateNames(cars));
+        } while (!validateNames(cars, carNames));
     }
 
-    public boolean validateNames(String[] cars) {
+    public boolean validateNames(String[] cars, String carNames) {
+        return (checkCarsNamesSize(carNames, cars) && validateNamesLength(cars));
+    }
+
+    public boolean checkCarsNamesSize(String carNames, String[] cars) {
+        return checkNumberOfCommas(carNames) + DIFFERENCE_OF_CAR_NUMBER_AND_COMMAS_NUMBER == cars.length;
+    }
+
+    public int checkNumberOfCommas(String carNames) {
+        return (int)carNames.chars()
+                .filter(c -> c == ',')
+                .count();
+    }
+
+    public boolean validateNamesLength(String[] cars) {
         Object[] tempList = Arrays.stream(cars)
-                .filter(s -> s.length() <= CAR_NAME_MAXIMUM_LENGTH && s.length() > 0)
+                .filter(s -> s.length() <= CAR_NAME_MAXIMUM_LENGTH)
                 .toArray();
 
         return cars.length == tempList.length;
-    }
-
-    public String removeBlanks(String carNames) {
-        return carNames.replaceAll(" ", "");
     }
 }

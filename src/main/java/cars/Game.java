@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Game {
-    private final int POSITIVE_INTEGER_START = 0;
+    private static final int POSITIVE_INTEGER_START = 0;
     private final Cars cars;
     private final Conditions condition;
 
@@ -22,7 +22,7 @@ public class Game {
     }
 
     public void forwardCar() {
-        IntStream.range(POSITIVE_INTEGER_START, getCars().size())
+        IntStream.range(POSITIVE_INTEGER_START, cars.getCarsSize())
                 .filter(i -> condition.validateForward())
                 .forEach(i -> getCars().get(i).forward());
     }
