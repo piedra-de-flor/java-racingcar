@@ -30,7 +30,7 @@ public class GameTest {
             testGame.forwardCar();
         }
 
-        assertThat(getFirstCarLocation()).isEqualTo(1 + tryNumber);
+        assertThat(getFirstCarLocation()).isEqualTo(tryNumber);
     }
 
     @DisplayName("차량 전진 실패 테스트")
@@ -45,7 +45,7 @@ public class GameTest {
             testGame.forwardCar();
         }
 
-        assertThat(getFirstCarLocation()).isEqualTo(1);
+        assertThat(getFirstCarLocation()).isEqualTo(0);
     }
 
     private int getFirstCarLocation() {

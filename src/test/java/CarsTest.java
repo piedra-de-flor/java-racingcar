@@ -13,14 +13,15 @@ public class CarsTest {
     Conditions testFilter = new TestConditionForSuccess();
     @DisplayName("차량 수에 맞는 크기의 리스트 생성 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"test1", "test2", "test3"})
+    @ValueSource(strings = {"test1", "test1,test2", "test1,test2,test3"})
     void 차량_리스트_크기_테스트(String input) {
         InputViewTest.initTestScanner(input);
         testInput.inputCarNames();
+        String[] testCarNames = input.split(",");
 
         Game testGame = new Game(testFilter, testInput);
 
-        assertThat(testGame.getCars().size()).isEqualTo(input);
+        assertThat(testGame.getCars().size()).isEqualTo(testCarNames.length);
     }
 
     @DisplayName("차량 이름 수에 맞는 크기의 리스트 생성 테스트")

@@ -22,7 +22,7 @@ public class CarTest{
         testCars = new Cars(new ArrayList<>(), testInput.getCarNames());
 
         testCars.getCars().get(0).forward();
-        assertThat(getFirstCarLocation()).isEqualTo(2);
+        assertThat(getFirstCarLocation()).isEqualTo(1);
     }
 
     private int getFirstCarLocation() {
