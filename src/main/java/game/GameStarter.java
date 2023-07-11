@@ -19,7 +19,8 @@ public class GameStarter {
     //어플리케이션 흐름 제어
     private void run() {
         initGameProperty();
-        startGame();
+        runForwardLogic();
+        showGameResult();
     }
 
     private void initGameProperty() {
@@ -28,12 +29,14 @@ public class GameStarter {
         manager = new Game(conditions, input);
     }
 
-    private void startGame() {
+    private void runForwardLogic() {
         for (int tryCount = 0; tryCount < input.getTryCount(); tryCount++) {
             manager.forwardCar();
             ResultView.getInstance().showResult(manager.getCars());
         }
+    }
 
+    private void showGameResult() {
         ResultView.getInstance().showWinner(manager.getWinner());
     }
 }
