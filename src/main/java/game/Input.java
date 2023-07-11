@@ -49,11 +49,11 @@ public class Input {
     }
 
     public boolean validateNames(String[] cars, String carNames) {
-        return (checkCarsNamesSize(carNames, cars) && validateNamesLength(cars));
+        return (checkCarsNamesSize(carNames, cars) && validateNamesLength(cars) && !carNames.isEmpty());
     }
 
     public boolean checkCarsNamesSize(String carNames, String[] cars) {
-        return checkNumberOfCommas(carNames) + DIFFERENCE_OF_CAR_NUMBER_AND_COMMAS_NUMBER == cars.length;
+        return (checkNumberOfCommas(carNames) + DIFFERENCE_OF_CAR_NUMBER_AND_COMMAS_NUMBER) == cars.length;
     }
 
     public int checkNumberOfCommas(String carNames) {
