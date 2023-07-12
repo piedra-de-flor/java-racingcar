@@ -29,10 +29,10 @@ public class Cars {
 
         sortedCars.sort(new CarLocationComparator());
 
-        final int maxLocation = sortedCars.get(0).getLocation();
+        final int MAX_LOCATION = sortedCars.get(0).getLocation();
 
         sortedCars.stream()
-                .filter(car -> car.getLocation() == maxLocation)
+                .filter(car -> car.getLocation() == MAX_LOCATION)
                 .forEach(winners::add);
 
         return winners;
