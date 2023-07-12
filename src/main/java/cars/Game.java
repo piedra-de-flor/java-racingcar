@@ -28,7 +28,6 @@ public class Game {
     }
 
     public List<Car> getWinner() {
-        Winners winners = new Winners(getCars());
-        return winners.getWinners();
+        return cars.getWinners();
     }
 }

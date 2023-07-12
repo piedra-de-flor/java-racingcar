@@ -1,6 +1,5 @@
 import cars.Car;
 import cars.Cars;
-import cars.Winners;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,16 +17,14 @@ public class WinnerTest {
 
         testForwardForWin(testCars.getCars());
 
-        Winners testWinners = new Winners(testCars.getCars());
-
-        assertThat(getTestWinnersName(testWinners)).isEqualTo("테스트용 우승자");
+        assertThat(getTestWinnersName(testCars)).isEqualTo("테스트용 우승자");
     }
 
     private void testForwardForWin(List<Car> testCars) {
         testCars.get(0).forward();
     }
 
-    private String getTestWinnersName(Winners testWinners) {
-        return testWinners.getWinners().get(0).getName();
+    private String getTestWinnersName(Cars testCars) {
+        return testCars.getWinners().get(0).getName();
     }
 }

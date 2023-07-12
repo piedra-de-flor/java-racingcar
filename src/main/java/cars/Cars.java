@@ -1,6 +1,8 @@
 package cars;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Cars {
@@ -19,6 +21,28 @@ public class Cars {
 
     private Car makeCar(String name) {
         return new Car(name);
+    }
+
+    public List<Car> getWinners() {
+        List<Car> winners = new ArrayList<>();
+        List<Car> sortedCars = new ArrayList<>(cars);
+
+        sortedCars.sort(new CarLocationComparator());
+
+        final int maxLocation = sortedCars.get(0).getLocation();
+
+        sortedCars.stream()
+                .filter(car -> car.getLocation() == maxLocation)
+                .forEach(winners::add);
+
+        return winners;
+    }
+
+    private static class CarLocationComparator implements Comparator<Car> {
+        @Override
+        public int compare(Car car1, Car car2) {
+            return Integer.compare(car2.getLocation(), car1.getLocation());
+        }
     }
 
     public List<Car> getCars() {
