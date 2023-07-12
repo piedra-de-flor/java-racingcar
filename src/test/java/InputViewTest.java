@@ -45,7 +45,7 @@ public class InputViewTest {
         initTestScanner(input);
 
         String[] testCars = input.split(",");
-        boolean real = testInput.validateNamesLength(testCars);
+        boolean real = testInput.checkNamesLength(testCars);
 
         assertThat(false).isEqualTo(real);
     }

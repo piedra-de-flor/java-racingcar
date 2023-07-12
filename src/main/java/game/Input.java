@@ -15,6 +15,7 @@ public class Input {
     public int getTryCount() {
         return tryCount;
     }
+
     public String[] getCarNames() {
         return cars;
     }
@@ -49,7 +50,7 @@ public class Input {
     }
 
     public boolean validateNames(String[] cars, String carNames) {
-        return (checkCarsNamesSize(carNames, cars) && validateNamesLength(cars) && !carNames.isEmpty());
+        return (checkCarsNamesSize(carNames, cars) && checkNamesLength(cars) && !carNames.isEmpty());
     }
 
     public boolean checkCarsNamesSize(String carNames, String[] cars) {
@@ -57,12 +58,12 @@ public class Input {
     }
 
     public int checkNumberOfCommas(String carNames) {
-        return (int)carNames.chars()
+        return (int) carNames.chars()
                 .filter(c -> c == ',')
                 .count();
     }
 
-    public boolean validateNamesLength(String[] cars) {
+    public boolean checkNamesLength(String[] cars) {
         Object[] tempList = Arrays.stream(cars)
                 .filter(s -> s.length() <= CAR_NAME_MAXIMUM_LENGTH)
                 .toArray();
