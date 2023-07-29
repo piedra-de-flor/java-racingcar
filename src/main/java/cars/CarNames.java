@@ -10,8 +10,9 @@ public class CarNames {
     private final List<String> carName;
 
     public CarNames(List<String> carName) {
+        removeBlank(carName);
         if (validateNames(carName, Input.getInstance().getCarNames())) {
-            this.carName =carName;
+            this.carName = carName;
         }
         else {
             throw new IllegalArgumentException("wrong names");
@@ -20,6 +21,10 @@ public class CarNames {
 
     public List<String> getCarNames() {
         return carName;
+    }
+
+    private void removeBlank(List<String> cars) {
+        cars.replaceAll(String::trim);
     }
 
     public boolean validateNames(List<String> cars, String carNames) {
