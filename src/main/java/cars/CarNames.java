@@ -24,7 +24,7 @@ public class CarNames {
     }
 
     private void removeBlank(List<String> cars) {
-        cars.replaceAll(String::trim);
+        cars.replaceAll(s -> s.replaceAll(" ", ""));
     }
 
     public boolean validateNames(List<String> cars, String carNames) {

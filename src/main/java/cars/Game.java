@@ -13,7 +13,7 @@ public class Game {
     private final Condition condition;
 
     public Game(Condition condition) {
-        List<String> carNames = List.of(Input.getInstance().getCarsSplitByComma());
+        List<String> carNames = new ArrayList<>(List.of(Input.getInstance().getCarsSplitByComma()));
         CarNames names = new CarNames(carNames);
         this.cars = new Cars(new ArrayList<>(), names.getCarNames());
         this.condition = condition;
