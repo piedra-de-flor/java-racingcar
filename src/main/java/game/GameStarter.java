@@ -1,14 +1,13 @@
 package game;
 
 import cars.Game;
-import filters.Conditions;
+import filters.Condition;
 import filters.RandomNumberCondition;
 
 //어플리케이션을 시작 및 제어하는 main 클래스
 public class GameStarter {
     private Game manager;
-    Input input = new Input();
-    private final Conditions conditions = new RandomNumberCondition();
+    private final Condition condition = new RandomNumberCondition();
 
     //어플리케이션 시작
     public static void main(String[] args) {
@@ -24,13 +23,13 @@ public class GameStarter {
     }
 
     private void initGameProperty() {
-        input.inputCarNames();
-        input.inputTryCount();
-        manager = new Game(conditions, input);
+        Input.getInstance().inputCarNames();
+        Input.getInstance().inputTryCount();
+        manager = new Game(condition);
     }
 
     private void runForwardLogic() {
-        for (int tryCount = 0; tryCount < input.getTryCount(); tryCount++) {
+        for (int tryCount = 0; tryCount < Input.getInstance().getTryCount(); tryCount++) {
             manager.forwardCar();
             ResultView.getInstance().showResult(manager.getCars());
         }

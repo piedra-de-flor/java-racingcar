@@ -1,73 +1,65 @@
 package game;
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
     private static final int CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE = 0;
-    private static final int CAR_NAME_MAXIMUM_LENGTH = 5;
-    private static final int DIFFERENCE_OF_CAR_NUMBER_AND_COMMAS_NUMBER = 1;
     public static Scanner scanner = new Scanner(System.in);
-    private String[] cars;
+    private String carNames;
     private int tryCount;
+    private String[] carsSplitByComma;
+
+    private static final Input INPUT = new Input();
+
+    private Input() {
+    }
+
+    public static Input getInstance() {
+        return INPUT;
+    }
 
     public int getTryCount() {
         return tryCount;
     }
 
-    public String[] getCarNames() {
-        return cars;
+    public String[] getCarsSplitByComma() {
+        return carsSplitByComma;
+    }
+
+    public String getCarNames() {
+        return carNames;
+    }
+
+    private int tryInput() {
+        try {
+            return scanner.nextInt();
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("wrong input");
+        }
     }
 
     public void inputTryCount() {
         do {
-            InputView.getInstance().printAskingTryCount();
-            tryCount = Integer.parseInt(tryInput());
+            System.out.println("시도할 횟수는 몇 회인가요?");
+            tryCount = tryInput();
         } while (!validateInput(tryCount));
-    }
-
-    private String tryInput() {
-        try {
-            return scanner.nextLine();
-        } catch (InputMismatchException e) {
-            throw new IllegalArgumentException(InputView.getInstance().inputException());
-        }
     }
 
     public boolean validateInput(int input) {
         return (input > CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE);
     }
 
+    private String tryInputNames() {
+        try {
+            return scanner.nextLine();
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("wrong input");
+        }
+    }
     public void inputCarNames() {
-        String carNames;
-
-        do {
-            InputView.getInstance().printAskingCarNames();
-            carNames = tryInput();
-            cars = carNames.split(",");
-        } while (!validateNames(cars, carNames));
-    }
-
-    public boolean validateNames(String[] cars, String carNames) {
-        return (checkCarsNamesSize(carNames, cars) && checkNamesLength(cars) && !carNames.isEmpty());
-    }
-
-    public boolean checkCarsNamesSize(String carNames, String[] cars) {
-        return (checkNumberOfCommas(carNames) + DIFFERENCE_OF_CAR_NUMBER_AND_COMMAS_NUMBER) == cars.length;
-    }
-
-    public int checkNumberOfCommas(String carNames) {
-        return (int) carNames.chars()
-                .filter(c -> c == ',')
-                .count();
-    }
-
-    public boolean checkNamesLength(String[] cars) {
-        Object[] tempList = Arrays.stream(cars)
-                .filter(s -> s.length() <= CAR_NAME_MAXIMUM_LENGTH)
-                .toArray();
-
-        return cars.length == tempList.length;
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        carNames = tryInputNames();
+        carsSplitByComma = carNames.split(",");
     }
 }

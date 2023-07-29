@@ -1,5 +1,5 @@
 package filters;
 
-public interface Conditions {
+public interface Condition {
     boolean validateForward();
 }

@@ -8,12 +8,11 @@ import java.util.List;
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars, String[] carNames) {
+    public Cars(List<Car> cars, List<String> carNames) {
         makeCarListWithNames(cars, carNames);
         this.cars = cars;
     }
-
-    private void makeCarListWithNames(List<Car> cars, String[] carNames) {
+    private void makeCarListWithNames(List<Car> cars, List<String> carNames) {
         for (String carName : carNames) {
             cars.add(makeCar(carName));
         }

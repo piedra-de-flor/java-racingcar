@@ -12,7 +12,9 @@ public class WinnerTest {
     @DisplayName("우승자 선정 테스트")
     @Test
     void 우승자_선정_테스트() {
-        String[] testCarNames = new String[]{"테스트용 우승자", "테스트용 우승 못한 자"};
+        List<String> testCarNames = new ArrayList<>();
+        testCarNames.add("테스트용 우승자");
+        testCarNames.add("테스트용 우승 못한자");
         Cars testCars = new Cars(new ArrayList<>(), testCarNames);
 
         testForwardForWin(testCars.getCars());

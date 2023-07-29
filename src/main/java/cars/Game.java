@@ -1,6 +1,6 @@
 package cars;
 
-import filters.Conditions;
+import filters.Condition;
 import game.Input;
 
 import java.util.ArrayList;
@@ -10,11 +10,13 @@ import java.util.stream.IntStream;
 public class Game {
     private static final int POSITIVE_INTEGER_START = 0;
     private final Cars cars;
-    private final Conditions condition;
+    private final Condition condition;
 
-    public Game(Conditions conditions, Input input) {
-        this.cars = new Cars(new ArrayList<>(), input.getCarNames());
-        this.condition = conditions;
+    public Game(Condition condition) {
+        List<String> carNames = List.of(Input.getInstance().getCarsSplitByComma());
+        CarNames names = new CarNames(carNames);
+        this.cars = new Cars(new ArrayList<>(), names.getCarNames());
+        this.condition = condition;
     }
 
     public List<Car> getCars() {
