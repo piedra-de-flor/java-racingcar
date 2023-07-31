@@ -5,12 +5,10 @@ import game.Input;
 import java.util.List;
 
 public class CarNames {
-    private static final int CAR_NAME_MAXIMUM_LENGTH = 5;
     private static final int DIFFERENCE_OF_CAR_NUMBER_AND_COMMAS_NUMBER = 1;
     private final List<String> carName;
 
     public CarNames(List<String> carName) {
-        removeBlank(carName);
         if (validateNames(carName, Input.getInstance().getCarNames())) {
             this.carName = carName;
         }
@@ -23,12 +21,8 @@ public class CarNames {
         return carName;
     }
 
-    private void removeBlank(List<String> cars) {
-        cars.replaceAll(s -> s.replaceAll(" ", ""));
-    }
-
     public boolean validateNames(List<String> cars, String carNames) {
-        return (checkCarsNamesSize(carNames, cars) && checkNamesLength(cars) && !carNames.isEmpty());
+        return (checkCarsNamesSize(carNames, cars) && !carNames.isEmpty());
     }
 
     public boolean checkCarsNamesSize(String carNames, List<String> cars) {
@@ -39,13 +33,5 @@ public class CarNames {
         return (int) carNames.chars()
                 .filter(c -> c == ',')
                 .count();
-    }
-
-    public boolean checkNamesLength(List<String> cars) {
-        Object[] tempList = cars.stream()
-                .filter(s -> s.length() <= CAR_NAME_MAXIMUM_LENGTH)
-                .toArray();
-
-        return cars.size() == tempList.length;
     }
 }

@@ -2,6 +2,7 @@ package game;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Input {
     private static final int CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE = 0;
@@ -61,5 +62,11 @@ public class Input {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         carNames = tryInputNames();
         carsSplitByComma = carNames.split(",");
+        removeBlanks(carsSplitByComma);
+    }
+
+    private void removeBlanks(String[] carsSplitByComma) {
+        IntStream.range(0, carsSplitByComma.length)
+                .forEach(i -> carsSplitByComma[i] = carsSplitByComma[i].trim());
     }
 }
