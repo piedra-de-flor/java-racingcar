@@ -29,6 +29,7 @@ public class GameStarter {
     }
 
     private void runForwardLogic() {
+        ResultView.getInstance().printResultAnnouncement();
         for (int tryCount = 0; tryCount < Input.getInstance().getTryCount(); tryCount++) {
             manager.forwardCar();
             ResultView.getInstance().showResult(manager.getCars());

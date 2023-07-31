@@ -13,6 +13,10 @@ public class ResultView {
         return RESULT_VIEW;
     }
 
+    public void printResultAnnouncement() {
+        System.out.println("실행 결과");
+    }
+
     public void showResult(List<Car> cars) {
         cars.forEach(this::showCarStatus);
         System.out.println();
