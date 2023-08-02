@@ -1,6 +1,6 @@
 import cars.Game;
 import filters.Condition;
-import game.Input;
+import game.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -15,7 +15,7 @@ public class CarsTest {
     @ValueSource(strings = {"test1", "test1,test2", "test1,test2,test3"})
     void 차량_리스트_크기_테스트(String input) {
         InputTest.initTestScanner(input);
-        Input.getInstance().inputCarNames();
+        InputView.getInstance().inputCarNames();
         String[] testCarNames = input.split(",");
 
         Game testGame = new Game(testFilter);
@@ -28,7 +28,7 @@ public class CarsTest {
     @ValueSource(strings = { "test1", "test1,test2", "test1,test2,test3"})
     void 이름이_있는_차량_리스트_크기_테스트(String input) {
         InputTest.initTestScanner(input);
-        Input.getInstance().inputCarNames();
+        InputView.getInstance().inputCarNames();
 
         Game testGame = new Game(testFilter);
         String[] testCars = input.split(",");

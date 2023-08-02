@@ -13,13 +13,13 @@ public class WinnerTest {
     @Test
     void 우승자_선정_테스트() {
         List<String> testCarNames = new ArrayList<>();
-        testCarNames.add("테스트용 우승자");
-        testCarNames.add("테스트용 우승 못한자");
+        testCarNames.add("우승자");
+        testCarNames.add("우승못한자");
         Cars testCars = new Cars(new ArrayList<>(), testCarNames);
 
         testForwardForWin(testCars.getCars());
 
-        assertThat(getTestWinnersName(testCars)).isEqualTo("테스트용 우승자");
+        assertThat(getTestWinnersName(testCars)).isEqualTo("우승자");
     }
 
     private void testForwardForWin(List<Car> testCars) {

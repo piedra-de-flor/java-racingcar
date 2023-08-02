@@ -18,19 +18,23 @@ public class GameStarter {
     //어플리케이션 흐름 제어
     private void run() {
         initGameProperty();
+        announceResult();
         runForwardLogic();
         showGameResult();
     }
 
     private void initGameProperty() {
-        Input.getInstance().inputCarNames();
-        Input.getInstance().inputTryCount();
+        InputView.getInstance().inputCarNames();
+        InputView.getInstance().inputTryCount();
         manager = new Game(condition);
     }
 
-    private void runForwardLogic() {
+    private void announceResult() {
         ResultView.getInstance().printResultAnnouncement();
-        for (int tryCount = 0; tryCount < Input.getInstance().getTryCount(); tryCount++) {
+    }
+
+    private void runForwardLogic() {
+        for (int tryCount = 0; tryCount < InputView.getInstance().getTryCount(); tryCount++) {
             manager.forwardCar();
             ResultView.getInstance().showResult(manager.getCars());
         }

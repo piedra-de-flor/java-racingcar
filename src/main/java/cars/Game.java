@@ -1,7 +1,7 @@
 package cars;
 
 import filters.Condition;
-import game.Input;
+import game.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +13,8 @@ public class Game {
     private final Condition condition;
 
     public Game(Condition condition) {
-        List<String> carNames = new ArrayList<>(List.of(Input.getInstance().getCarsSplitByComma()));
-        CarNames names = new CarNames(carNames);
-        this.cars = new Cars(new ArrayList<>(), names.getCarNames());
+        List<String> carNames = InputView.getInstance().getCarNames().getCarNames();
+        this.cars = new Cars(new ArrayList<>(), carNames);
         this.condition = condition;
     }
 

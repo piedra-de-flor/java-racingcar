@@ -1,20 +1,29 @@
-package cars;
-
-import game.Input;
+package game.InputVO;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class CarNames {
     private static final int DIFFERENCE_OF_CAR_NUMBER_AND_COMMAS_NUMBER = 1;
     private final List<String> carName;
 
-    public CarNames(List<String> carName) {
-        if (validateNames(carName, Input.getInstance().getCarNames())) {
+    public CarNames(String carNames) {
+        List<String> carName = getCarNamesToList(carNames);
+        if (validateNames(carName, carNames)) {
             this.carName = carName;
+        } else {
+            throw new IllegalArgumentException("wrong naming");
         }
-        else {
-            throw new IllegalArgumentException("wrong names");
-        }
+    }
+
+    private List<String> getCarNamesToList(String carNames) {
+        return removeBlanks(carNames.split(","));
+    }
+
+    private List<String> removeBlanks(String[] carsSplitByComma) {
+        int bound = carsSplitByComma.length;
+        IntStream.range(0, bound).forEach(i -> carsSplitByComma[i] = carsSplitByComma[i].trim());
+        return List.of(carsSplitByComma);
     }
 
     public List<String> getCarNames() {

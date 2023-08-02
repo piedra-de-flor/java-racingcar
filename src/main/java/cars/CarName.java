@@ -18,6 +18,6 @@ public class CarName {
     }
 
     public boolean checkNamesLength(String carName) {
-        return carName.length() < CAR_NAME_MAXIMUM_LENGTH;
+        return carName.length() <= CAR_NAME_MAXIMUM_LENGTH;
     }
 }

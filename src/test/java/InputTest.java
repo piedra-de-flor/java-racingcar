@@ -1,4 +1,5 @@
-import game.Input;
+import game.InputView;
+import game.InputVO.TryCount;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,23 +9,20 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
-
 public class InputTest {
     public static void initTestScanner(String testInput) {
         InputStream in = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(in);
 
-        Input.scanner = new Scanner(System.in);
+        InputView.scanner = new Scanner(System.in);
     }
 
     @DisplayName("차량 수, 전진 시도 횟수의 입력값들이 1보다 작을시 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {-1,-3, 0})
-    void 입력이_1보다_작을시_테스트(int input) {
-        boolean real = Input.getInstance().validateInput(input);
-
-        assertThat(false).isEqualTo(real);
+    @ValueSource(strings = {"-1", "-3", "0"})
+    void 입력이_1보다_작을시_테스트(String input) {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new TryCount(input);});
     }
 
     @DisplayName("전진 시도 횟수의 입력값들이 문자가 아닐시 예외 테스트")
@@ -34,6 +32,6 @@ public class InputTest {
         initTestScanner(input);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            Input.getInstance().inputTryCount();});
+            InputView.getInstance().inputTryCount();});
     }
 }

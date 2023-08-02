@@ -1,6 +1,6 @@
 import cars.Game;
 import filters.Condition;
-import game.Input;
+import game.InputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -14,7 +14,7 @@ public class GameTest {
     Game testGame;
     private void initPropertyForTest() {
         InputTest.initTestScanner("Test");
-        Input.getInstance().inputCarNames();
+        InputView.getInstance().inputCarNames();
     }
 
     @DisplayName("차량 전진 성공 테스트")
