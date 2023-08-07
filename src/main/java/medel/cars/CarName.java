@@ -1,4 +1,4 @@
-package cars;
+package medel.cars;
 
 public class CarName {
     private static final int CAR_NAME_MAXIMUM_LENGTH = 5;

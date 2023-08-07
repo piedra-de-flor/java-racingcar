@@ -1,7 +1,6 @@
-package cars;
+package medel.cars;
 
-import filters.Condition;
-import game.InputView;
+import medel.filters.Condition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,7 @@ public class Game {
     private final Cars cars;
     private final Condition condition;
 
-    public Game(Condition condition) {
-        List<String> carNames = InputView.getInstance().getCarNames().getCarNames();
+    public Game(Condition condition, List<String> carNames) {
         this.cars = new Cars(new ArrayList<>(), carNames);
         this.condition = condition;
     }

@@ -1,4 +1,4 @@
-package filters;
+package medel.filters;
 
 public interface Condition {
     boolean validateForward();
