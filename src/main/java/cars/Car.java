@@ -1,11 +1,17 @@
 package cars;
 
 public class Car {
-    private final int INITIAL_LOCATION = 1;
+    private static final int INITIAL_LOCATION = 0;
     private int location;
+    private final CarName name;
 
-    Car() {
+    Car(String name) {
+        this.name = new CarName(name);
         this.location = INITIAL_LOCATION;
+    }
+
+    public String getName() {
+        return name.getCarName();
     }
 
     public int getLocation() {

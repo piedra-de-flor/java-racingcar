@@ -1,29 +1,34 @@
 package cars;
 
-import filters.Conditions;
-import game.Input;
+import filters.Condition;
+import game.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
 public class Game {
-    private final int POSITIVE_INTEGER_START = 0;
+    private static final int POSITIVE_INTEGER_START = 0;
     private final Cars cars;
-    private final Conditions conditions;
+    private final Condition condition;
 
-    public Game(Conditions conditions, Input input) {
-        this.cars = new Cars(new ArrayList<>(), input.getCarNumber());
-        this.conditions = conditions;
+    public Game(Condition condition) {
+        List<String> carNames = InputView.getInstance().getCarNames().getCarNames();
+        this.cars = new Cars(new ArrayList<>(), carNames);
+        this.condition = condition;
     }
 
-    public List<Car> getCarList() {
-        return cars.getCarList();
+    public List<Car> getCars() {
+        return cars.getCars();
     }
 
     public void forwardCar() {
-        IntStream.range(POSITIVE_INTEGER_START, getCarList().size())
-                .filter(i -> conditions.validateForward())
-                .forEach(i -> getCarList().get(i).forward());
+        IntStream.range(POSITIVE_INTEGER_START, cars.getCarsSize())
+                .filter(i -> condition.validateForward())
+                .forEach(i -> getCars().get(i).forward());
+    }
+
+    public List<Car> getWinner() {
+        return cars.getWinners();
     }
 }
