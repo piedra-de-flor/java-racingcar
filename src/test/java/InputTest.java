@@ -1,5 +1,6 @@
-import game.InputView;
-import game.InputVO.TryCount;
+import controller.ViewController;
+import veiw.InputView;
+import medel.InputVO.TryCount;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,6 +11,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class InputTest {
+    ViewController testViewController = new ViewController();
     public static void initTestScanner(String testInput) {
         InputStream in = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(in);
@@ -32,6 +34,6 @@ public class InputTest {
         initTestScanner(input);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            InputView.getInstance().inputTryCount();});
+            testViewController.inputTryCount();});
     }
 }

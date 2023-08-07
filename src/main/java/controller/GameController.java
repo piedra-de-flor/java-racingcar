@@ -1,18 +1,20 @@
-package game;
+package controller;
 
-import cars.Game;
-import filters.Condition;
-import filters.RandomNumberCondition;
+import medel.cars.Game;
+import medel.filters.Condition;
+import medel.filters.RandomNumberCondition;
+import veiw.ResultView;
 
 //어플리케이션을 시작 및 제어하는 main 클래스
-public class GameStarter {
+public class GameController {
     private Game manager;
+    private final ViewController viewController = new ViewController();
     private final Condition condition = new RandomNumberCondition();
 
     //어플리케이션 시작
     public static void main(String[] args) {
-        GameStarter gameStarter = new GameStarter();
-        gameStarter.run();
+        GameController gameController = new GameController();
+        gameController.run();
     }
 
     //어플리케이션 흐름 제어
@@ -24,9 +26,8 @@ public class GameStarter {
     }
 
     private void initGameProperty() {
-        InputView.getInstance().inputCarNames();
-        InputView.getInstance().inputTryCount();
-        manager = new Game(condition);
+        viewController.initInputProperty();
+        manager = new Game(condition, viewController.getCarNames().getCarNames());
     }
 
     private void announceResult() {
@@ -34,7 +35,8 @@ public class GameStarter {
     }
 
     private void runForwardLogic() {
-        for (int tryCount = 0; tryCount < InputView.getInstance().getTryCount(); tryCount++) {
+        int inputTryCount = viewController.getTryCount().getTryCount();
+        for (int tryCount = 0; tryCount < inputTryCount; tryCount++) {
             manager.forwardCar();
             ResultView.getInstance().showResult(manager.getCars());
         }

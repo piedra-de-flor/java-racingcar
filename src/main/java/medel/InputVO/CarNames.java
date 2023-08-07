@@ -1,4 +1,4 @@
-package game.InputVO;
+package medel.InputVO;
 
 import java.util.List;
 import java.util.stream.IntStream;
