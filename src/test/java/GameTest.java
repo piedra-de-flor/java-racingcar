@@ -1,6 +1,6 @@
 import controller.ViewController;
-import medel.cars.Game;
-import medel.filters.Condition;
+import medel.service.Game;
+import medel.service.filter.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -24,7 +24,7 @@ public class GameTest {
     void 차량_전진_성공_테스트(int tryNumber) {
         initPropertyForTest();
         testFilter = new TestConditionForSuccess();
-        testGame = new Game(testFilter, testViewController.getCarNames().getCarNames());
+        testGame = new Game(testFilter, testViewController.getCarNames());
 
         for (int i = 0; i < tryNumber; i++) {
             testGame.forwardCar();
@@ -39,7 +39,7 @@ public class GameTest {
     void 차량_전진_실패_테스트(int tryNumber) {
         initPropertyForTest();
         testFilter = new TestConditionForFail();
-        testGame = new Game(testFilter, testViewController.getCarNames().getCarNames());
+        testGame = new Game(testFilter, testViewController.getCarNames());
 
         for (int i = 0; i < tryNumber; i++) {
             testGame.forwardCar();

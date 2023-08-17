@@ -1,6 +1,6 @@
 import controller.ViewController;
-import medel.cars.Game;
-import medel.filters.Condition;
+import medel.service.Game;
+import medel.service.filter.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -19,7 +19,7 @@ public class CarsTest {
         String[] testCarNames = input.split(",");
         testViewController.inputCarNames();
 
-        Game testGame = new Game(testFilter, testViewController.getCarNames().getCarNames());
+        Game testGame = new Game(testFilter, testViewController.getCarNames());
 
         assertThat(testGame.getCars().size()).isEqualTo(testCarNames.length);
     }
@@ -31,7 +31,7 @@ public class CarsTest {
         InputTest.initTestScanner(input);
         testViewController.inputCarNames();
 
-        Game testGame = new Game(testFilter, testViewController.getCarNames().getCarNames());
+        Game testGame = new Game(testFilter, testViewController.getCarNames());
         String[] testCars = input.split(",");
 
         assertThat(testGame.getCars().size()).isEqualTo(testCars.length);

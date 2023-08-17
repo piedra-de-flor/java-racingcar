@@ -1,5 +1,5 @@
 import controller.ViewController;
-import medel.cars.Car;
+import medel.domain.Car;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

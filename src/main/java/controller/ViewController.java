@@ -1,9 +1,12 @@
 package controller;
 
-import medel.InputVO.CarNames;
-import medel.InputVO.TryCount;
+import medel.domain.Car;
+import medel.vo.CarNames;
+import medel.vo.TryCount;
 import veiw.InputView;
 import veiw.ResultView;
+
+import java.util.List;
 
 public class ViewController {
     private CarNames carNames;
@@ -24,11 +27,23 @@ public class ViewController {
         carNames = new CarNames(InputView.getInstance().inputCarNames());
     }
 
-    public CarNames getCarNames() {
-        return carNames;
+    public List<String> getCarNames() {
+        return carNames.getCarNames();
     }
 
-    public TryCount getTryCount() {
-        return tryCount;
+    public int getTryCount() {
+        return tryCount.getTryCount();
+    }
+
+    public void announceResult() {
+        ResultView.getInstance().printResultAnnouncement();
+    }
+
+    public void showGameResult(List<Car> winners) {
+        ResultView.getInstance().showWinner(winners);
+    }
+
+    public void showStatus(List<Car> cars) {
+        ResultView.getInstance().showStatus(cars);
     }
 }

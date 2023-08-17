@@ -1,17 +1,19 @@
-package medel.cars;
+package medel.domain;
+
+import medel.vo.CarLocation;
+import medel.vo.CarName;
 
 public class Car {
-    private static final int INITIAL_LOCATION = 0;
     private int location;
-    private final CarName name;
+    private final String name;
 
     public Car(String name) {
-        this.name = new CarName(name);
-        this.location = INITIAL_LOCATION;
+        this.name = new CarName(name).getCarName();
+        this.location = new CarLocation().getLocation();
     }
 
     public String getName() {
-        return name.getCarName();
+        return name;
     }
 
     public int getLocation() {

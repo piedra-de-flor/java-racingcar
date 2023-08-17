@@ -1,4 +1,6 @@
-package medel.cars;
+package repository;
+
+import medel.domain.Car;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,7 +30,8 @@ public class Cars {
 
         sortedCars.sort(new CarLocationComparator());
 
-        final int MAX_LOCATION = sortedCars.get(0).getLocation();
+        Car winner = sortedCars.get(0);
+        final int MAX_LOCATION = winner.getLocation();
 
         sortedCars.stream()
                 .filter(car -> car.getLocation() == MAX_LOCATION)

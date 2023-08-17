@@ -1,6 +1,6 @@
 package veiw;
 
-import medel.cars.Car;
+import medel.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class ResultView {
         System.out.println("실행 결과");
     }
 
-    public void showResult(List<Car> cars) {
+    public void showStatus(List<Car> cars) {
         cars.forEach(this::showCarStatus);
         System.out.println();
     }

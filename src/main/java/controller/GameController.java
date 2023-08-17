@@ -1,9 +1,8 @@
 package controller;
 
-import medel.cars.Game;
-import medel.filters.Condition;
-import medel.filters.RandomNumberCondition;
-import veiw.ResultView;
+import medel.service.Game;
+import medel.service.filter.Condition;
+import medel.service.filter.RandomNumberCondition;
 
 //어플리케이션을 시작 및 제어하는 main 클래스
 public class GameController {
@@ -20,29 +19,21 @@ public class GameController {
     //어플리케이션 흐름 제어
     private void run() {
         initGameProperty();
-        announceResult();
+        viewController.announceResult();
         runForwardLogic();
-        showGameResult();
+        viewController.showGameResult(manager.getWinner());
     }
 
     private void initGameProperty() {
         viewController.initInputProperty();
-        manager = new Game(condition, viewController.getCarNames().getCarNames());
-    }
-
-    private void announceResult() {
-        ResultView.getInstance().printResultAnnouncement();
+        manager = new Game(condition, viewController.getCarNames());
     }
 
     private void runForwardLogic() {
-        int inputTryCount = viewController.getTryCount().getTryCount();
+        int inputTryCount = viewController.getTryCount();
         for (int tryCount = 0; tryCount < inputTryCount; tryCount++) {
             manager.forwardCar();
-            ResultView.getInstance().showResult(manager.getCars());
+            viewController.showStatus(manager.getCars());
         }
-    }
-
-    private void showGameResult() {
-        ResultView.getInstance().showWinner(manager.getWinner());
     }
 }

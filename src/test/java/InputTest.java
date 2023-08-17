@@ -1,6 +1,6 @@
 import controller.ViewController;
 import veiw.InputView;
-import medel.InputVO.TryCount;
+import medel.vo.TryCount;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
