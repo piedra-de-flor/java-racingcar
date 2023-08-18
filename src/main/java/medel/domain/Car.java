@@ -4,23 +4,23 @@ import medel.vo.CarLocation;
 import medel.vo.CarName;
 
 public class Car {
-    private int location;
-    private final String name;
+    private final CarLocation carLocation;
+    private final CarName name;
 
     public Car(String name) {
-        this.name = new CarName(name).getCarName();
-        this.location = new CarLocation().getLocation();
+        this.name = new CarName(name);
+        this.carLocation = new CarLocation();
     }
 
     public String getName() {
-        return name;
+        return name.getCarName();
     }
 
     public int getLocation() {
-        return this.location;
+        return this.carLocation.location;
     }
 
     public void forward() {
-        this.location++;
+        this.carLocation.location++;
     }
 }
