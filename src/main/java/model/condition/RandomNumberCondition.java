@@ -1,4 +1,4 @@
-package medel.service.filter;
+package model.condition;
 
 public class RandomNumberCondition implements Condition {
     private final int MINIMUM_VALUE_FOR_CAR_FORWARD = 4;

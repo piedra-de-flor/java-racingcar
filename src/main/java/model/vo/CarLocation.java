@@ -1,4 +1,4 @@
-package medel.vo;
+package model.vo;
 
 public class CarLocation {
     private static final int INITIAL_LOCATION = 0;

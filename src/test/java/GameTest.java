@@ -1,6 +1,6 @@
-import controller.ViewController;
-import medel.service.Game;
-import medel.service.filter.Condition;
+import controller.GameController;
+import model.Game;
+import model.condition.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -12,10 +12,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class GameTest {
     Condition testFilter;
     Game testGame;
-    ViewController testViewController = new ViewController();
+    GameController testController = new GameController();
     private void initPropertyForTest() {
         InputTest.initTestScanner("Test");
-        testViewController.inputCarNames();
+        testController.inputCarNames();
     }
 
     @DisplayName("차량 전진 성공 테스트")
@@ -24,7 +24,7 @@ public class GameTest {
     void 차량_전진_성공_테스트(int tryNumber) {
         initPropertyForTest();
         testFilter = new TestConditionForSuccess();
-        testGame = new Game(testFilter, testViewController.getCarNames());
+        testGame = new Game(testFilter, testController.getNames());
 
         for (int i = 0; i < tryNumber; i++) {
             testGame.forwardCar();
@@ -39,7 +39,7 @@ public class GameTest {
     void 차량_전진_실패_테스트(int tryNumber) {
         initPropertyForTest();
         testFilter = new TestConditionForFail();
-        testGame = new Game(testFilter, testViewController.getCarNames());
+        testGame = new Game(testFilter, testController.getNames());
 
         for (int i = 0; i < tryNumber; i++) {
             testGame.forwardCar();

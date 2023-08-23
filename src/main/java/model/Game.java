@@ -1,7 +1,7 @@
-package medel.service;
+package model;
 
-import medel.domain.Car;
-import medel.service.filter.Condition;
+import model.domain.Car;
+import model.condition.Condition;
 import repository.Cars;
 
 import java.util.ArrayList;

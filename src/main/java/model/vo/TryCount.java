@@ -1,4 +1,4 @@
-package medel.vo;
+package model.vo;
 
 import java.util.InputMismatchException;
 

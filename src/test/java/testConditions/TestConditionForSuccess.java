@@ -1,6 +1,6 @@
 package testConditions;
 
-import medel.service.filter.Condition;
+import model.condition.Condition;
 
 public class TestConditionForSuccess implements Condition {
     @Override

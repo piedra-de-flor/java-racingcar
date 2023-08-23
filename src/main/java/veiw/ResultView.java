@@ -1,6 +1,6 @@
 package veiw;
 
-import medel.domain.Car;
+import model.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,12 +1,12 @@
-import controller.ViewController;
-import medel.domain.Car;
+import controller.GameController;
+import model.domain.Car;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarNamesTest {
-    ViewController testViewController = new ViewController();
+    GameController testController = new GameController();
 
     @DisplayName("차량 이름이 5자를 넘어갈 경우 예외 테스트")
     @ParameterizedTest
@@ -23,6 +23,6 @@ public class CarNamesTest {
         InputTest.initTestScanner(input);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            testViewController.inputCarNames();});
+            testController.inputCarNames();});
     }
 }

@@ -1,15 +1,15 @@
-package medel.domain;
+package model.domain;
 
-import medel.vo.CarLocation;
-import medel.vo.CarName;
+import model.vo.CarLocation;
+import model.vo.CarName;
 
 public class Car {
-    private final CarLocation carLocation;
+    private final CarLocation location;
     private final CarName name;
 
     public Car(String name) {
         this.name = new CarName(name);
-        this.carLocation = new CarLocation();
+        this.location = new CarLocation();
     }
 
     public String getName() {
@@ -17,10 +17,10 @@ public class Car {
     }
 
     public int getLocation() {
-        return this.carLocation.location;
+        return this.location.location;
     }
 
     public void forward() {
-        this.carLocation.location++;
+        this.location.location++;
     }
 }
