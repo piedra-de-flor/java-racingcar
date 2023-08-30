@@ -9,7 +9,7 @@ public class RandomNumberCondition implements Condition {
         return makeRandomNumber() >= MINIMUM_VALUE_FOR_CAR_FORWARD;
     }
 
-    public double makeRandomNumber() {
+    private double makeRandomNumber() {
         return Math.random() * SCALE_FACTOR_ZERO_TO_TEN;
     }
 }
