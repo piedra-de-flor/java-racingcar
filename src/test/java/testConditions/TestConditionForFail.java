@@ -1,6 +1,6 @@
 package testConditions;
 
-import filters.Condition;
+import model.condition.Condition;
 
 public class TestConditionForFail implements Condition {
     @Override

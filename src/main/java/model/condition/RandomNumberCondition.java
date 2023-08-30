@@ -1,4 +1,4 @@
-package filters;
+package model.condition;
 
 public class RandomNumberCondition implements Condition {
     private final int MINIMUM_VALUE_FOR_CAR_FORWARD = 4;
@@ -9,7 +9,7 @@ public class RandomNumberCondition implements Condition {
         return makeRandomNumber() >= MINIMUM_VALUE_FOR_CAR_FORWARD;
     }
 
-    public double makeRandomNumber() {
+    private double makeRandomNumber() {
         return Math.random() * SCALE_FACTOR_ZERO_TO_TEN;
     }
 }

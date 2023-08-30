@@ -1,4 +1,4 @@
-package game.InputVO;
+package model.vo;
 
 import java.util.InputMismatchException;
 
@@ -16,11 +16,11 @@ public class TryCount {
     }
 
     private int validateTryCount(int input) {
-        if (input > CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE) {
-            return input;
-        } else {
+        if (input <= CAR_NUMBER_AND_TRY_NUMBER_MINIMUM_VALUE) {
             throw new IllegalArgumentException("wrong try count input");
         }
+
+        return input;
     }
 
     public int getTryCount() {

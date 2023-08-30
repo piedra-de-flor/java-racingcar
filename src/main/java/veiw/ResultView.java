@@ -1,6 +1,6 @@
-package game;
+package veiw;
 
-import cars.Car;
+import model.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +13,19 @@ public class ResultView {
         return RESULT_VIEW;
     }
 
+    public void printInputCarNamesMassage() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+    }
+
+    public void printInputTryCountMassage() {
+        System.out.println("시도할 횟수는 몇 회인가요?");
+    }
+
     public void printResultAnnouncement() {
         System.out.println("실행 결과");
     }
 
-    public void showResult(List<Car> cars) {
+    public void showStatus(List<Car> cars) {
         cars.forEach(this::showCarStatus);
         System.out.println();
     }
